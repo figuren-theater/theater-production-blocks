@@ -5,33 +5,25 @@
     <img src="https://raw.githubusercontent.com/figuren-theater/logos/main/favicon.png" alt="figuren.theater Logo" width="100" height="100">
   </a>
 
-  <h1 align="center">figuren.theater | theater_production_blocks</h1>
+  <h1 align="center">Theater Production Blocks</h1>
 
   <p align="center">
-    ... like the WordPress Multisite network for puppeteers - <a href="https://figuren.theater">figuren.theater</a>.
+    WordPress blocks for theater productions to be used with the Site- and Block-Editor.
     <br /><br /><br />
-    <a href="https://meta.figuren.theater/blog"><strong>Read our blog</strong></a>
-    <br />
-    <br />
-    <a href="https://figuren.theater">See the network in action</a>
-    •
-    <a href="https://mein.figuren.theater">Join the network</a>
-    •
-    <a href="https://websites.fuer.figuren.theater">Create your own network</a>
   </p>
 </div>
 
-## About 
-
-
-This is the long desc
-
-* [x] *list closed tracking-issues or `docs` files here*
-* [ ] Do you have any [ideas](https://github.com/figuren-theater/theater-production-blocks/issues/new) ?
-
 ## Background & Motivation
 
-...
+This Plugin contains the following blocks related to theater:
+
+- Duration
+- Premiere Date
+- Target Group
+
+I don't wanted to reinvent the wheel, that's why this plugin is an extension to **wp-theater**
+
+It will also work standalone, as long as you provide it the slugs of one or more existing post_types via the included filters.
 
 ## Install
 
@@ -42,25 +34,14 @@ This is the long desc
 
 ## Usage
 
-### API
-
-```php
-Figuren_Theater::API\get_...()
-```
-
-### Plugins included
-
-This package contains the following plugins. 
-Thoose are completely managed by code and lack of their typical UI.
-
-* ...
+Open a new production and insert one of the new blocks.
 
 
-### What does this package do in addition?
+### Actions and Filters included
 
-Accompaniying the core functionality of the mentioned plugins, theese **best practices** are included with this package.
-
-* ...
+1. uses the *(yet non existent, default)* `wp-theater-production-posttype` filter of the *future* **wp-theater** plugin
+2. `Figuren_Theater\Production_Blocks\Registration\post_types`
+3. `Figuren_Theater\Production_Blocks\Registration\post_type_supports`
 
 
 ## Built with & uses
@@ -100,9 +81,3 @@ who participated in this project.
 
 This project is licensed under the **GPL-3.0-or-later**, see the [LICENSE](/LICENSE) file for
 details
-
-## Acknowledgments
-
-  - [altis](https://github.com/search?q=org%3Ahumanmade+altis) by humanmade, as our digital role model and inspiration
-  - [@roborourke](https://github.com/roborourke) for his clear & understandable [coding guidelines](https://docs.altis-dxp.com/guides/code-review/standards/)
-  - [python-project-template](https://github.com/rochacbruno/python-project-template) for their nice template->repo renaming workflow
