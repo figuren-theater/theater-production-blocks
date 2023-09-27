@@ -1,4 +1,6 @@
-/build/
+# Deliver the build files
+# /build/
+
 /node_modules
 /vendor
 *.sql

@@ -2,10 +2,10 @@
     "name": "figuren-theater/theater-production-blocks",
     "description": "... like the figuren.theater WordPress Multisite network.",
     "license": "GPL-3.0+",
-    "type": "wordpress-muplugin",
+    "type": "wordpress-plugin",
     "keywords": [
         "wordpress",
-        "wordpress-muplugin"
+        "wordpress-plugin"
     ],
     "authors": [
         {
@@ -30,10 +30,6 @@
     },
     "repositories": [
         {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-options"
-        },
-        {
             "type": "composer",
             "url": "https://wpackagist.org"
         }
@@ -49,18 +45,10 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
-            "koodimonni/composer-dropin-installer": true,
-            "figuren-theater/altis-core": true,
             "phpstan/extension-installer": true,
             "ergebnis/composer-normalize": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "figuren-theater/ft-core": true
+            "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
-    },
-    "extra": {
-        "altis": {
-            "install-overrides": []
-        }
     }
 }
