@@ -1,13 +1,11 @@
 <?php
 /**
- * Figuren_Theater theater_production_blocks.
+ * Figuren_Theater Production_Blocks.
  *
  * @package figuren-theater/theater-production-blocks
  */
 
-namespace Figuren_Theater\theater_production_blocks;
-
-use Altis;
+namespace Figuren_Theater\Production_Blocks;
 
 /**
  * Register module.
@@ -16,19 +14,9 @@ use Altis;
  */
 function register() :void {
 
-	$default_settings = [
-		'enabled' => true, // Needs to be set.
-	];
-	$options = [
-		'defaults' => $default_settings,
-	];
-
-	Altis\register_module(
-		'theater-production-blocks',
-		DIRECTORY,
-		'theater_production_blocks',
-		$options,
-		__NAMESPACE__ . '\\bootstrap'
+	\array_map(
+		__NAMESPACE__ . '\\Registration\\add_post_type_supports',
+		Registration\get_post_types()
 	);
 }
 
