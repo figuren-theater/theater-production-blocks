@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wpt/production-duration",
+	"version": "0.2.0",
+	"title": "Duration",
+	"category": "text",
+	"description": "Shows duration of current production.",
+	"icon": "clock",
+	"usesContext": [ "postType", "postId"],
+	"attributes": {
+		"textAlign": {
+			"type": "string"
+		},
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"prefix": {
+			"type": "string",
+			"default": ""
+		},
+		"suffix": {
+			"type": "string",
+			"default": ""
+		},
+		"humanReadable": {
+			"type": "boolean"
+		}
+	},
+	"example": {
+		"viewportWidth": 300
+	},
+	"supports": {
+		"align": true,
+		"color": {
+			"gradients": true,
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"fontAppearance": true,
+				"textTransform": true
+			}
+		},
+		"multiple": true,
+		"html": false,
+		"reusable": false
+	},
+	"textdomain": "theater-production-blocks",
+	"editorScript": "file:duration.js",
+	"editorStyle": "file:./duration.css",
+	"style": "file:./style-duration.css"
+}

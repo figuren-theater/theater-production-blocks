@@ -1,11 +1,14 @@
 {
     "name": "figuren-theater/theater-production-blocks",
-    "description": "... like the figuren.theater WordPress Multisite network.",
+    "description": "WordPress blocks for theater productions to be used with the Site- and Block-Editor.",
     "license": "GPL-3.0+",
     "type": "wordpress-plugin",
     "keywords": [
         "wordpress",
-        "wordpress-plugin"
+        "wordpress-plugin",
+        "theater",
+        "blocks",
+        "gutenberg"
     ],
     "authors": [
         {
@@ -26,7 +29,10 @@
         "source": "https://github.com/figuren-theater/theater-production-blocks"
     },
     "require-dev": {
-        "figuren-theater/code-quality": "*"
+        "figuren-theater/code-quality": "^0.8.1"
+    },
+    "suggest": {
+      "wpackagist-plugin/theater": "Even this plugin can be used standalone, it will be nicer & easier together with the WordPress 'Theater' plugin."
     },
     "repositories": [
         {
@@ -39,6 +45,8 @@
             "inc/"
         ],
         "files": [
+            "inc/block-loading/namespace.php",
+            "inc/registration/namespace.php",
             "inc/namespace.php"
         ]
     },

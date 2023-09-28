@@ -1,0 +1,8 @@
+{
+	"name": "theater-production-duration",
+	"version": "0.2.0",
+	"description": "Shows duration of current production.",
+	"author": "Carsten Bach",
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://websites.fuer.figuren.theater"
+}
