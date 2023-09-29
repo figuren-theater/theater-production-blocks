@@ -1,8 +1,0 @@
-{
-	"name": "theater-production-targetgroup",
-	"version": "0.2.0",
-	"description": "Shows targetgroup of current production.",
-	"author": "Carsten Bach",
-	"license": "GPL-2.0-or-later",
-	"homepage": "https://websites.fuer.figuren.theater"
-}

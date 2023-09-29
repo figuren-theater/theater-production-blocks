@@ -11,7 +11,7 @@
  * Plugin Name:       Theater Production Blocks
  * Plugin URI:        https://github.com/figuren-theater/theater-production-blocks
  * Description:       WordPress blocks for theater productions to be used with the Site- and Block-Editor.
- * Version:           0.1.0-alpha
+ * Version:           0.1.0
  * Requires at least: 6.0
  * Requires PHP:      7.1
  * Author:            figuren.theater

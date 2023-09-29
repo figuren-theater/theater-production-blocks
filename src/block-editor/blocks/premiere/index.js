@@ -16,7 +16,7 @@ import { registerBlockType, createBlock } from '@wordpress/blocks';
  * Internal dependencies
  */
 import json from './block.json';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
 
 const { name, ...settings } = json;
@@ -34,7 +34,7 @@ registerBlockType(name, {
 		'block description',
 		'theater-production-blocks'
 	),
-	edit,
+	edit: Edit,
 	save,
 
 	/**

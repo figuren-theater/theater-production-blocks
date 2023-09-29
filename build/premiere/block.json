@@ -1,66 +1,69 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "wpt/production-premiere",
-	"version": "0.1.0",
-	"title": "Premiere",
-	"category": "text",
-	"description": "Show Premiere Date of production.",
-	"icon": "calendar-alt",
-	"usesContext": [ "postType", "postId"],
-	"attributes": {
-		"textAlign": {
-			"type": "string",
-			"default": "left"
-		},
-		"tagName": {
-			"type": "string",
-			"default": "div"
-		},
-		"prefix": {
-			"type": "string",
-			"default": ""
-		},
-		"suffix": {
-			"type": "string",
-			"default": ""
-		}
-	},
-	"example": {
-		"viewportWidth": 300
-	},
-	"supports": {
-		"align": true,
-		"color": {
-			"gradients": true,
-			"background": true,
-			"text": true,
-			"link": true
-		},
-		"spacing": {
-			"margin": true,
-			"padding": true
-		},
-		"typography": {
-			"fontSize": true,
-			"lineHeight": true,
-			"__experimentalFontFamily": true,
-			"__experimentalFontWeight": true,
-			"__experimentalFontStyle": true,
-			"__experimentalTextTransform": true,
-			"__experimentalLetterSpacing": true,
-			"__experimentalDefaultControls": {
-				"fontSize": true,
-				"fontAppearance": true,
-				"textTransform": true
-			}
-		},
-		"multiple": true,
-		"html": false,
-		"reusable": false
-	},
-	"textdomain": "theater-production-blocks",
-	"editorScript": "file:premiere.js",
-	"editorStyle":  "file:./premiere.css",
-	"style":        "file:./style-premiere.css"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wpt/production-premiere",
+  "version": "0.1.0",
+  "title": "Premiere",
+  "category": "text",
+  "description": "Show Premiere Date of production.",
+  "icon": "calendar-alt",
+  "usesContext": [
+    "postType",
+    "postId"
+  ],
+  "attributes": {
+    "textAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "tagName": {
+      "type": "string",
+      "default": "div"
+    },
+    "prefix": {
+      "type": "string",
+      "default": ""
+    },
+    "suffix": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "example": {
+    "viewportWidth": 300
+  },
+  "supports": {
+    "align": true,
+    "color": {
+      "gradients": true,
+      "background": true,
+      "text": true,
+      "link": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true,
+      "__experimentalFontStyle": true,
+      "__experimentalTextTransform": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true,
+        "fontAppearance": true,
+        "textTransform": true
+      }
+    },
+    "multiple": true,
+    "html": false,
+    "reusable": false
+  },
+  "textdomain": "theater-production-blocks",
+  "editorScript": "file:premiere.js",
+  "editorStyle": "file:./premiere.css",
+  "style": "file:./style-premiere.css"
 }

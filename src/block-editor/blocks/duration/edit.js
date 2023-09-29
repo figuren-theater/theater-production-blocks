@@ -55,22 +55,23 @@ import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js';
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param  root0
- * @param  root0.attributes
- * @param  root0.attributes.textAlign
- * @param  root0.attributes.prefix
- * @param  root0.attributes.suffix
- * @param  root0.attributes.humanReadable
- * @param  root0.setAttributes
- * @param  root0.isSelected
- * @param  root0.context
- * @param  root0.context.postType
- * @param  root0.context.postId
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
+ *
+ * @param {Object}  root0
+ * @param {Object}  root0.attributes
+ * @param {string}  root0.attributes.textAlign
+ * @param {string}  root0.attributes.prefix
+ * @param {string}  root0.attributes.suffix
+ * @param {boolean} root0.attributes.humanReadable
+ * @param {symbol}  root0.setAttributes
+ * @param {boolean} root0.isSelected
+ * @param {Object}  root0.context
+ * @param {string}  root0.context.postType
+ * @param {number}  root0.context.postId
  *
  * @return {WPElement} Element to render.
  */
-export default function edit({
+export default function Edit({
 	attributes: { textAlign, prefix, suffix, humanReadable },
 	setAttributes,
 	isSelected,
@@ -101,7 +102,7 @@ export default function edit({
 	 * @version 2022.05.22
 	 * @author  Carsten Bach
 	 *
-	 * @return  ServerSideRender     Rendered output of our block
+	 * @return  {ServerSideRender}     Rendered output of our block
 	 */
 	const DurationServerSideRender = () => (
 		<ServerSideRender

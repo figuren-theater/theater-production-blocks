@@ -1,64 +1,67 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "wpt/production-targetgroup",
-	"version": "0.1.0",
-	"title": "Targetgroup",
-	"category": "text",
-	"description": "Shows targetgroup of current production.",
-	"icon": "groups",
-	"usesContext": [ "postType", "postId"],
-	"attributes": {
-		"textAlign": {
-			"type": "string"
-		},
-		"tagName": {
-			"type": "string",
-			"default": "p"
-		},
-		"prefix": {
-			"type": "string",
-			"default": ""
-		},
-		"suffix": {
-			"type": "string",
-			"default": ""
-		}
-	},
-	"example": {
-		"viewportWidth": 300
-	},
-	"supports": {
-		"align": true,
-		"color": {
-			"gradients": true,
-			"background": true,
-			"text": true
-		},
-		"spacing": {
-			"margin": true,
-			"padding": true
-		},
-		"typography": {
-			"fontSize": true,
-			"lineHeight": true,
-			"__experimentalFontFamily": true,
-			"__experimentalFontWeight": true,
-			"__experimentalFontStyle": true,
-			"__experimentalTextTransform": true,
-			"__experimentalLetterSpacing": true,
-			"__experimentalDefaultControls": {
-				"fontSize": true,
-				"fontAppearance": true,
-				"textTransform": true
-			}
-		},
-		"multiple": true,
-		"html": false,
-		"reusable": false
-	},
-	"textdomain": "theater-production-blocks",
-	"editorScript": "file:targetgroup.js",
-	"editorStyle": "file:./targetgroup.css",
-	"style": "file:./style-targetgroup.css"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wpt/production-targetgroup",
+  "version": "0.1.0",
+  "title": "Targetgroup",
+  "category": "text",
+  "description": "Shows targetgroup of current production.",
+  "icon": "groups",
+  "usesContext": [
+    "postType",
+    "postId"
+  ],
+  "attributes": {
+    "textAlign": {
+      "type": "string"
+    },
+    "tagName": {
+      "type": "string",
+      "default": "p"
+    },
+    "prefix": {
+      "type": "string",
+      "default": ""
+    },
+    "suffix": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "example": {
+    "viewportWidth": 300
+  },
+  "supports": {
+    "align": true,
+    "color": {
+      "gradients": true,
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true,
+      "__experimentalFontStyle": true,
+      "__experimentalTextTransform": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true,
+        "fontAppearance": true,
+        "textTransform": true
+      }
+    },
+    "multiple": true,
+    "html": false,
+    "reusable": false
+  },
+  "textdomain": "theater-production-blocks",
+  "editorScript": "file:targetgroup.js",
+  "editorStyle": "file:./targetgroup.css",
+  "style": "file:./style-targetgroup.css"
 }
