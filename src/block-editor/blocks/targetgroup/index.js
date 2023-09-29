@@ -21,7 +21,6 @@ import { registerBlockType } from '@wordpress/blocks';
  */
 // import './style.scss';
 
-
 /**
  * Internal dependencies
  */
@@ -30,7 +29,7 @@ import edit from './edit';
 import save from './save';
 import deprecated from './deprecations';
 
-const {name, ...settings} = json;
+const { name, ...settings } = json;
 
 /**
  * Every block starts by registering a new block type definition.
@@ -39,8 +38,12 @@ const {name, ...settings} = json;
  */
 registerBlockType(name, {
 	...settings,
-	title: _x('Targetgroup','block title','theater-production-blocks'),
-	description: _x('Shows targetgroup of current production.','block description','theater-production-blocks'),
+	title: _x('Targetgroup', 'block title', 'theater-production-blocks'),
+	description: _x(
+		'Shows targetgroup of current production.',
+		'block description',
+		'theater-production-blocks'
+	),
 
 	/**
 	 * @see ./edit.js

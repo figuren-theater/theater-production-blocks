@@ -18,9 +18,8 @@ import { __ } from '@wordpress/i18n';
 import {
 	__experimentalNumberControl as NumberControl,
 	__experimentalHStack as HStack,
-	ToggleControl
+	ToggleControl,
 } from '@wordpress/components';
-
 
 import { useEntityProp } from '@wordpress/core-data';
 /**
@@ -36,9 +35,7 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 
-
 import ServerSideRender from '@wordpress/server-side-render';
-
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -48,43 +45,48 @@ import ServerSideRender from '@wordpress/server-side-render';
  */
 import './editor.scss';
 
-
 /**
  * Internal dependencies
  */
-import { DURATION_META } from '../../../utils/constants.js'
-import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js'
-
-
-
+import { DURATION_META } from '../../../utils/constants.js';
+import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js';
 
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
+ * @param  root0
+ * @param  root0.attributes
+ * @param  root0.attributes.textAlign
+ * @param  root0.attributes.prefix
+ * @param  root0.attributes.suffix
+ * @param  root0.attributes.humanReadable
+ * @param  root0.setAttributes
+ * @param  root0.isSelected
+ * @param  root0.context
+ * @param  root0.context.postType
+ * @param  root0.context.postId
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
  *
  * @return {WPElement} Element to render.
  */
-export default function edit( {
+export default function edit({
 	attributes: { textAlign, prefix, suffix, humanReadable },
-	setAttributes, isSelected,
+	setAttributes,
+	isSelected,
 	context: { postType, postId },
-} ) {
+}) {
+	const blockProps = useBlockProps({
+		className: classnames({
+			[`has-text-align-${textAlign}`]: textAlign,
+		}),
+	});
 
+	const [meta, setMeta] = useEntityProp('postType', postType, 'meta', postId);
 
-
-	const blockProps = useBlockProps( {
-		className: classnames( {
-			[ `has-text-align-${ textAlign }` ]: textAlign,
-		} ),
-	} );
-
-	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta', postId );
-
-	const metaFieldValue = meta[ DURATION_META ];
-	const updateMetaValue = ( newValue ) => {
-		setMeta( { ...meta, [DURATION_META]: newValue } );
+	const metaFieldValue = meta[DURATION_META];
+	const updateMetaValue = (newValue) => {
+		setMeta({ ...meta, [DURATION_META]: newValue });
 	};
 
 	/**
@@ -95,82 +97,92 @@ export default function edit( {
 	 * bypasses the serverside DB lookup for the
 	 * (properly) new and unsaved post_meta.
 	 *
-	 * @package figuren-theater/theater-production-blocks
+	 * @package
 	 * @version 2022.05.22
 	 * @author  Carsten Bach
 	 *
 	 * @return  ServerSideRender     Rendered output of our block
 	 */
 	const DurationServerSideRender = () => (
-	    <ServerSideRender
-	        block="wpt/production-duration"
-	        attributes={ {
-	        	textAlign,
-	        	prefix,
-	        	suffix,
-	        	humanReadable
-	        }}
-	        urlQueryArgs={{
-	        	metaFieldValue
-	       	}}
-	    />
+		<ServerSideRender
+			block="wpt/production-duration"
+			attributes={{
+				textAlign,
+				prefix,
+				suffix,
+				humanReadable,
+			}}
+			urlQueryArgs={{
+				metaFieldValue,
+			}}
+		/>
 	);
-
 
 	return (
 		<>
 			<InspectorControls>
-				<div className="block-editor-block-card" >
+				<div className="block-editor-block-card">
 					<ToggleControl
-						label={ __( 'Show human readable duration.', 'theater-production-blocks' ) }
-						onChange={ ( newHumanReadable ) => setAttributes( { humanReadable: newHumanReadable } ) }
-						checked={ humanReadable }
-			            help={
-			                humanReadable
-			                    ? __('Shows e.g. "2 hours 10 minutes".','theater-production-blocks')
-			                    : __('Shows pure "130" minutes only.','theater-production-blocks')
-			            }
+						label={__(
+							'Show human readable duration.',
+							'theater-production-blocks'
+						)}
+						onChange={(newHumanReadable) =>
+							setAttributes({ humanReadable: newHumanReadable })
+						}
+						checked={humanReadable}
+						help={
+							humanReadable
+								? __(
+										'Shows e.g. "2 hours 10 minutes".',
+										'theater-production-blocks'
+								  )
+								: __(
+										'Shows pure "130" minutes only.',
+										'theater-production-blocks'
+								  )
+						}
 					/>
 				</div>
 			</InspectorControls>
 
 			<BlockControls group="block">
 				<AlignmentControl
-					value={ textAlign }
-					onChange={ ( nextAlign ) => {
-						setAttributes( { textAlign: nextAlign } );
-					} }
+					value={textAlign}
+					onChange={(nextAlign) => {
+						setAttributes({ textAlign: nextAlign });
+					}}
 				/>
 			</BlockControls>
 
-			<div { ...blockProps }>
-				{ humanReadable && ! isSelected ? (
+			<div {...blockProps}>
+				{humanReadable && !isSelected ? (
 					<DurationServerSideRender />
 				) : (
-					<HStack justify={ textAlign }>
+					<HStack justify={textAlign}>
 						<Prefix
-							prefix={ prefix }
-							isSelected={ isSelected }
-							setAttributes={ setAttributes }
+							prefix={prefix}
+							isSelected={isSelected}
+							setAttributes={setAttributes}
 						/>
 						<span>
 							<NumberControl
 								isShiftStepEnabled
 								shiftStep="5"
 								step="5"
-								min={ 0 }
+								min={0}
 								placeholder="80"
-								value={ metaFieldValue }
-								onChange={ updateMetaValue }
+								value={metaFieldValue}
+								onChange={updateMetaValue}
 							/>
 						</span>
 						<Suffix
-							suffix={ suffix }
-							isSelected={ isSelected }
-							setAttributes={ setAttributes }
+							suffix={suffix}
+							isSelected={isSelected}
+							setAttributes={setAttributes}
 						/>
 					</HStack>
-				) }
+				)}
 			</div>
 		</>
 	);

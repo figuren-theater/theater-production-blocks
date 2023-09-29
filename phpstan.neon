@@ -9,6 +9,7 @@ parameters:
     excludePaths:
         analyseAndScan:
             - build/
+            - node_modules/
         analyse:
             - vendor/
 

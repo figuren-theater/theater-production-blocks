@@ -1,4 +1,3 @@
-
 /**
  * Retrieves the translation of text.
  *
@@ -10,20 +9,16 @@ import { __ } from '@wordpress/i18n';
  * WordPress dependencies
  */
 
-import {
-	RichText
-} from '@wordpress/block-editor';
-
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
-import { ALLOWED_PRE_SUF_FIX_FORMATS } from './constants.js'
+import { ALLOWED_PRE_SUF_FIX_FORMATS } from './constants.js';
 
-const defaultPrefixLabel = __( 'Prefix','theater-production-blocks' );
-const defaultPrefixPlaceholder = __( 'Prefix','theater-production-blocks' ) + ' ';
-
-
+const defaultPrefixLabel = __('Prefix', 'theater-production-blocks');
+const defaultPrefixPlaceholder =
+	__('Prefix', 'theater-production-blocks') + ' ';
 
 export const Prefix = ({
 	prefix,
@@ -31,43 +26,35 @@ export const Prefix = ({
 	isSelected,
 	label = defaultPrefixLabel,
 	placeholder = defaultPrefixPlaceholder,
-	tagName = "span"
+	tagName = 'span',
 }) => (
 	<>
-		{ isSelected ? (
+		{isSelected ? (
 			<RichText
-				allowedFormats={ ALLOWED_PRE_SUF_FIX_FORMATS }
+				allowedFormats={ALLOWED_PRE_SUF_FIX_FORMATS}
 				className="t7b4-production-blocks__prefix"
-				multiline={ false }
-				aria-label={ label }
-				placeholder={ placeholder }
-				value={ prefix }
-				onChange={ ( value ) =>
-					setAttributes( { prefix: value } )
-				}
-				tagName={ tagName }
+				multiline={false}
+				aria-label={label}
+				placeholder={placeholder}
+				value={prefix}
+				onChange={(value) => setAttributes({ prefix: value })}
+				tagName={tagName}
 			/>
 		) : (
 			<>
-				{ prefix ? (
-					<RichText.Content
-						tagName={ tagName }
-						value={ prefix }
-					/>
+				{prefix ? (
+					<RichText.Content tagName={tagName} value={prefix} />
 				) : (
-					<>
-					</>
+					<></>
 				)}
 			</>
-		) }
+		)}
 	</>
 );
 
-
-
-
-const defaultSuffixLabel = __( 'Suffix','theater-production-blocks' );
-const defaultSuffixPlaceholder = __( 'Suffix','theater-production-blocks' ) + ' ';
+const defaultSuffixLabel = __('Suffix', 'theater-production-blocks');
+const defaultSuffixPlaceholder =
+	__('Suffix', 'theater-production-blocks') + ' ';
 
 export const Suffix = ({
 	suffix,
@@ -75,34 +62,28 @@ export const Suffix = ({
 	isSelected,
 	label = defaultSuffixLabel,
 	placeholder = defaultSuffixPlaceholder,
-	tagName = "span"
+	tagName = 'span',
 }) => (
 	<>
-		{ isSelected ? (
+		{isSelected ? (
 			<RichText
-				allowedFormats={ ALLOWED_PRE_SUF_FIX_FORMATS }
+				allowedFormats={ALLOWED_PRE_SUF_FIX_FORMATS}
 				className="t7b4-production-blocks__suffix"
-				multiline={ false }
-				aria-label={ label }
-				placeholder={ placeholder }
-				value={ suffix }
-				onChange={ ( value ) =>
-					setAttributes( { suffix: value } )
-				}
-				tagName={ tagName }
+				multiline={false}
+				aria-label={label}
+				placeholder={placeholder}
+				value={suffix}
+				onChange={(value) => setAttributes({ suffix: value })}
+				tagName={tagName}
 			/>
 		) : (
 			<>
-				{ suffix ? (
-					<RichText.Content
-						tagName={ tagName }
-						value={ suffix }
-					/>
+				{suffix ? (
+					<RichText.Content tagName={tagName} value={suffix} />
 				) : (
-					<>
-					</>
+					<></>
 				)}
 			</>
-		) }
+		)}
 	</>
 );

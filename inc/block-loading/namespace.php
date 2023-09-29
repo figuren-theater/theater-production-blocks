@@ -75,11 +75,20 @@ function static_blocks_init() {
  */
 function dynamic_blocks_init() : void {
 
-	$dynamic_blocks = [
-		'duration',
-		'premiere',
-		'targetgroup',
-	];
+	/**
+	 * Get list of folder from the src-directory
+	 *
+	 * @see https://stackoverflow.com/a/52499093/585690 (scandir to only show folders, not files)
+	 */
+	$dynamic_blocks = array_map(
+		function( $dir ) {
+			return basename( $dir );
+		},
+		glob(
+			Production_Blocks\DIRECTORY . '/src/block-editor/blocks/*',
+			GLOB_ONLYDIR
+		)
+	);
 
 	foreach ( $dynamic_blocks as $block ) {
 		require_once Production_Blocks\DIRECTORY . '/build/' . $block . '/index.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant

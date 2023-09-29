@@ -32,7 +32,7 @@
         "figuren-theater/code-quality": "^0.8.1"
     },
     "suggest": {
-      "wpackagist-plugin/theater": "Even this plugin can be used standalone, it will be nicer & easier together with the WordPress 'Theater' plugin."
+        "wpackagist-plugin/theater": "Even this plugin can be used standalone, it will be nicer & easier together with the WordPress 'Theater' plugin."
     },
     "repositories": [
         {
