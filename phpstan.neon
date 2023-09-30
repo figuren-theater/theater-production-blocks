@@ -5,6 +5,7 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true
     paths:
         - inc/
+        - src/
         - plugin.php
     excludePaths:
         analyseAndScan:

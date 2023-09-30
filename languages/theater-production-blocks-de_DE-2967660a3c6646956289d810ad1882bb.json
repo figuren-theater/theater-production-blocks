@@ -1,7 +1,7 @@
 {
     "translation-revision-date": "2022-05-31 13:36+0100",
-    "generator": "WP-CLI\/2.5.0",
-    "source": "build\/shadow-related-query.js",
+    "generator": "WP-CLI\/2.7.1",
+    "source": "src\/block-editor\/variations\/shadow-terms\/index.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
@@ -10,12 +10,6 @@
                 "lang": "de_DE",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
-            "Production Related": [
-                "Inhalte zur Produktion"
-            ],
-            "Shows content related to the production, that is connected to this post. ": [
-                "Zeigt weitere Inhalte die ebenfalls mit der Produktion verbunden sind, mit der auch dieser Inhalt verbunden ist."
-            ],
             "relates": [
                 "Verwandte"
             ],
@@ -24,6 +18,12 @@
             ],
             "connected": [
                 "verbunden"
+            ],
+            "Related Productions": [
+                "Verbundene Produktionen"
+            ],
+            "Lists the Production(s) related to the current content.": [
+                "Zeigt eine Liste mit den verbundenen Produktionen."
             ]
         }
     }

@@ -1,4 +1,4 @@
-# Deliver the build files
+# Deliver the build files, until we are hosted wp.org/plugins
 # /build/
 
 /node_modules

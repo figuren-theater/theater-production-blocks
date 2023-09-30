@@ -10,13 +10,21 @@ namespace Figuren_Theater\Production_Blocks\Block_Loading;
 use Figuren_Theater\Production_Blocks;
 
 use function add_action;
+use function current_user_can;
+use function get_post_types_by_support;
+// use function register_block_type; // TEMP. Disabled !
+use function get_post_type_object;
 use function load_plugin_textdomain;
 use function plugins_url;
-// use function register_block_type; // TEMP. Disabled !
+use function register_block_type;
+use function register_post_meta;
+use function wp_add_inline_script;
 use function wp_enqueue_script;
 use function wp_get_environment_type;
 use function wp_register_script;
 use function wp_set_script_translations;
+
+use WP_Post_Type;
 
 /**
  * Start the engines.
@@ -91,8 +99,89 @@ function dynamic_blocks_init() : void {
 	);
 
 	foreach ( $dynamic_blocks as $block ) {
-		require_once Production_Blocks\DIRECTORY . '/build/' . $block . '/index.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
+		require_once Production_Blocks\DIRECTORY . '/build/' . $block . '/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 	}
+}
+
+function register_dynamic_block( string $dir, string $namespace ) : void {
+
+	$block      = \basename( $dir );
+	$post_types = get_post_types_by_support( "theater-$block" );
+
+	if ( empty( $post_types ) ) {
+		return;
+	}
+
+	register_block_type(
+		$dir,
+		[
+			'render_callback' => $namespace . '\\render_block',
+		]
+	);
+
+	$meta_key = get_meta_key( $dir, $namespace );
+	$meta_def = array_merge(
+		\call_user_func( $namespace . '\\get_meta_definition' ),
+		[
+			'auth_callback' => __NAMESPACE__ . '\\is_user_allowed_to_edit_postmeta',
+			'show_in_rest'  => true,
+		]
+	);
+
+	array_map(
+		function( $post_type ) use ( $meta_key, $meta_def ) : void {
+			register_post_meta(
+				$post_type,
+				$meta_key,
+				$meta_def
+			);
+		},
+		$post_types
+	);
+
+	wp_set_script_translations(
+		"wpt-production-$block-editor-script",
+		'theater-production-blocks',
+		Production_Blocks\DIRECTORY . '/languages'
+	);
+
+	wp_add_inline_script(
+		"wpt-production-$block-editor-script",
+		'window.Theater = window.Theater || {};' .
+		'window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};' .
+		"window.Theater.ProductionBlocks.{$block} = " . json_encode( [
+			'PostMetaKey' => $meta_key,
+		] ) . ';',
+		'before'
+	);
+}
+
+/**
+ * 'auth_callback' for register_post_meta()
+ *
+ * @param  bool   $allowed    Or not?
+ * @param  string $meta_key   Key of the post_meta data.
+ * @param  int    $object_id  ID of the post (or other post_type).
+ *
+ * @return bool
+ */
+function is_user_allowed_to_edit_postmeta( bool $allowed, string $meta_key, int $object_id ) : bool {
+
+	$post_type = \get_post_type( $object_id );
+	$pto = get_post_type_object( $post_type );
+
+	if ( ! $pto instanceof WP_Post_Type ) {
+		return false;
+	}
+	return current_user_can( $pto->cap->edit_post_meta, $object_id, $meta_key );
+}
+
+function get_meta_key( string $dir, string $namespace ) : string {
+	$block = \basename( $dir );
+	return apply_filters(
+		$namespace . '\\meta_key',
+		'_wpt_' . $block
+	);
 }
 
 /**

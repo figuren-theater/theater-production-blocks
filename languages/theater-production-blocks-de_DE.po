@@ -4,203 +4,129 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Theater Production Blocks 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/theater-production-blocks\n"
-"POT-Creation-Date: 2022-05-31T11:06:42+00:00\n"
-"PO-Revision-Date: 2022-05-31 13:36+0100\n"
+"POT-Creation-Date: 2023-09-29T23:53:37+02:00\n"
+"PO-Revision-Date: 2023-09-30 00:38+0200\n"
 "Last-Translator: Carsten Bach\n"
 "Language-Team: figuren.theater\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: Poedit 3.3.1\n"
 "X-Domain: theater-production-blocks\n"
-"X-Poedit-Language: de_DE\n"
 
 #. Plugin Name of the plugin
 msgid "Theater Production Blocks"
 msgstr "Theater Blöcke für 'Produktionen'"
 
+#. Plugin URI of the plugin
+msgid "https://github.com/figuren-theater/theater-production-blocks"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"WordPress blocks for theater productions to be used with the Site- and Block-Editor."
+msgstr ""
+
 #. Author of the plugin
-msgid "Carsten Bach"
+msgid "figuren.theater"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://figuren.theater"
 msgstr ""
 
 #: build/document-setting-panel.js:1
-#: src/block-editor/plugins/document-setting-panel/index.js:65
+#: src/block-editor/plugins/document-setting-panel/index.js:63
 msgid "Production Meta"
 msgstr "Infos zur Produktion"
 
 #: build/document-setting-panel.js:1
-#: src/block-editor/plugins/document-setting-panel/index.js:71
+#: src/block-editor/plugins/document-setting-panel/index.js:69
 msgid "Premiere Date"
 msgstr "Premieren-Datum"
 
-#: build/document-setting-panel.js:1
-#: build/premiere/premiere.js:1
-#: src/block-editor/blocks/premiere/edit.js:119
-#: src/block-editor/plugins/document-setting-panel/index.js:82
+#: build/document-setting-panel.js:1 build/premiere/premiere.js:1
+#: src/block-editor/blocks/premiere/edit.js:113
+#: src/block-editor/plugins/document-setting-panel/index.js:78
 msgid "Choose a Date"
 msgstr "Wähle ein Datum"
 
-#: build/document-setting-panel.js:1
-#: build/targetgroup/targetgroup.js:1
-#: src/block-editor/blocks/targetgroup/edit.js:103
-#: src/block-editor/plugins/document-setting-panel/index.js:86
+#: build/document-setting-panel.js:1 build/targetgroup/targetgroup.js:1
+#: src/block-editor/blocks/targetgroup/edit.js:98
+#: src/block-editor/plugins/document-setting-panel/index.js:85
 msgid "Targetgroup"
 msgstr "Zielgruppe"
 
 #: build/document-setting-panel.js:1
-#: src/block-editor/plugins/document-setting-panel/index.js:94
+#: src/block-editor/plugins/document-setting-panel/index.js:93
 msgid "Duration"
 msgstr "Dauer"
 
 #: build/document-setting-panel.js:1
-#: src/block-editor/plugins/document-setting-panel/index.js:109
+#: src/block-editor/plugins/document-setting-panel/index.js:108
 msgid "Add the duration in Minutes."
 msgstr "Gib die Dauer in Minuten an."
 
-#: build/duration/duration.js:1
-#: build/premiere/premiere.js:1
-#: build/targetgroup/targetgroup.js:1
-#: src/utils/pre-suf-fix.js:23
-#: src/utils/pre-suf-fix.js:24
+#: build/duration/duration.js:1 build/premiere/premiere.js:1
+#: build/targetgroup/targetgroup.js:1 src/utils/pre-suf-fix.js:19
+#: src/utils/pre-suf-fix.js:21
 msgid "Prefix"
 msgstr ""
 
-#: build/duration/duration.js:1
-#: build/premiere/premiere.js:1
-#: build/targetgroup/targetgroup.js:1
-#: src/utils/pre-suf-fix.js:69
-#: src/utils/pre-suf-fix.js:70
+#: build/duration/duration.js:1 build/premiere/premiere.js:1
+#: build/targetgroup/targetgroup.js:1 src/utils/pre-suf-fix.js:55
+#: src/utils/pre-suf-fix.js:57
 msgid "Suffix"
 msgstr ""
 
-#: build/duration/duration.js:1
-#: src/block-editor/blocks/duration/index.js:42
-#: build/duration/block.json
-#: src/block-editor/blocks/duration/block.json
+#: build/duration/duration.js:1 src/block-editor/blocks/duration/index.js:31
+#: build/duration/block.json src/block-editor/blocks/duration/block.json
 msgctxt "block title"
 msgid "Duration"
 msgstr "Dauer"
 
-#: build/duration/duration.js:1
-#: src/block-editor/blocks/duration/index.js:43
-#: build/duration/block.json
-#: src/block-editor/blocks/duration/block.json
+#: build/duration/duration.js:1 src/block-editor/blocks/duration/index.js:32
+#: build/duration/block.json src/block-editor/blocks/duration/block.json
 msgctxt "block description"
 msgid "Shows duration of current production."
 msgstr "Zeigt die Dauer dieser Produktion."
 
-#: build/duration/duration.js:1
-#: src/block-editor/blocks/duration/edit.js:125
+#: build/duration/duration.js:1 src/block-editor/blocks/duration/edit.js:127
 msgid "Show human readable duration."
 msgstr "Zeige die Dauer in Worten."
 
-#: build/duration/duration.js:1
-#: src/block-editor/blocks/duration/edit.js:130
+#: build/duration/duration.js:1 src/block-editor/blocks/duration/edit.js:137
 msgid "Shows e.g. \"2 hours 10 minutes\"."
 msgstr "Zeigt z.B. \"2 Stunden 10 Minuten\"."
 
-#: build/duration/duration.js:1
-#: src/block-editor/blocks/duration/edit.js:131
+#: build/duration/duration.js:1 src/block-editor/blocks/duration/edit.js:141
 msgid "Shows pure \"130\" minutes only."
 msgstr "Zeigt nur die puren \"130\" Minuten an."
 
-#: build/premiere/premiere.js:1
-#: src/block-editor/blocks/premiere/index.js:44
-#: build/premiere/block.json
-#: src/block-editor/blocks/premiere/block.json
+#: build/premiere/premiere.js:1 src/block-editor/blocks/premiere/index.js:31
+#: build/premiere/block.json src/block-editor/blocks/premiere/block.json
 msgctxt "block title"
 msgid "Premiere"
 msgstr "Premiere"
 
-#: build/premiere/premiere.js:1
-#: src/block-editor/blocks/premiere/index.js:45
-#: build/premiere/block.json
-#: src/block-editor/blocks/premiere/block.json
+#: build/premiere/premiere.js:1 src/block-editor/blocks/premiere/index.js:32
+#: build/premiere/block.json src/block-editor/blocks/premiere/block.json
 msgctxt "block description"
 msgid "Show Premiere Date of production."
 msgstr "Zeigt das Premiere-Datum der Produktion."
 
-#: build/shadow-related-query.js:1
-#: src/block-editor/variations/shadow-related-query/index.js:51
-msgid "Production Related"
-msgstr "Inhalte zur Produktion"
-
-#: build/shadow-related-query.js:1
-#: src/block-editor/variations/shadow-related-query/index.js:52
-msgid "Shows content related to the production, that is connected to this post. "
-msgstr "Zeigt weitere Inhalte die ebenfalls mit der Produktion verbunden sind, mit der auch dieser Inhalt verbunden ist."
-
-#: build/shadow-related-query.js:1
-#: build/shadow-terms.js:1
-#: src/block-editor/variations/shadow-related-query/index.js:54
-#: src/block-editor/variations/shadow-terms/index.js:36
-msgid "relates"
-msgstr "Verwandte"
-
-#: build/shadow-related-query.js:1
-#: build/shadow-terms.js:1
-#: src/block-editor/variations/shadow-related-query/index.js:55
-#: src/block-editor/variations/shadow-terms/index.js:37
-msgid "staging"
-msgstr "Inszenierung"
-
-#: build/shadow-related-query.js:1
-#: build/shadow-terms.js:1
-#: src/block-editor/variations/shadow-related-query/index.js:56
-#: src/block-editor/variations/shadow-terms/index.js:38
-msgid "connected"
-msgstr "verbunden"
-
-#: build/shadow-terms.js:1
-#: src/block-editor/variations/shadow-terms/index.js:33
-msgid "Related Productions"
-msgstr "Verbundene Produktionen"
-
-#: build/shadow-terms.js:1
-#: src/block-editor/variations/shadow-terms/index.js:34
-msgid "Lists the Production(s) related to the current content."
-msgstr "Zeigt eine Liste mit den verbundenen Produktionen."
-
-#: build/subsites-query.js:1
-#: src/block-editor/variations/subsites-query/index.js:48
-msgid "Production Subsites"
-msgstr "Produktions-Unterseiten"
-
-#: build/subsites-query.js:1
-#: src/block-editor/variations/subsites-query/index.js:49
-msgid "Shows the subsites of the current production. Used on a production subsite, this block lists all sibling \"subsites\" under the same parent production."
-msgstr "Zeigt die Unterseite(n) der aktuellen Produktion. Eingesetzt auf einer Produktions-Unterseite, zeigt dieser Block alle gleichrangigen Unterseiten zur übergeordeneten Produktion."
-
-#: build/subsites-query.js:1
-#: src/block-editor/variations/subsites-query/index.js:51
-msgid "zusatz"
-msgstr ""
-
-#: build/subsites-query.js:1
-#: src/block-editor/variations/subsites-query/index.js:52
-msgid "produktion"
-msgstr ""
-
-#: build/subsites-query.js:1
-#: src/block-editor/variations/subsites-query/index.js:53
-msgid "theater"
-msgstr ""
-
 #: build/targetgroup/targetgroup.js:1
-#: src/block-editor/blocks/targetgroup/index.js:42
-#: build/targetgroup/block.json
+#: src/block-editor/blocks/targetgroup/index.js:31 build/targetgroup/block.json
 #: src/block-editor/blocks/targetgroup/block.json
 msgctxt "block title"
 msgid "Targetgroup"
 msgstr "Zielgruppe"
 
 #: build/targetgroup/targetgroup.js:1
-#: src/block-editor/blocks/targetgroup/index.js:43
-#: build/targetgroup/block.json
+#: src/block-editor/blocks/targetgroup/index.js:32 build/targetgroup/block.json
 #: src/block-editor/blocks/targetgroup/block.json
 msgctxt "block description"
 msgid "Shows targetgroup of current production."
 msgstr "Zeigt die Zielgruppe(n) der Produktion."
-

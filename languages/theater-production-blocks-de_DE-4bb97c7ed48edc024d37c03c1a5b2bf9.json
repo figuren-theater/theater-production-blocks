@@ -1,7 +1,7 @@
 {
     "translation-revision-date": "2022-05-31 13:36+0100",
-    "generator": "WP-CLI\/2.5.0",
-    "source": "src\/block-editor\/variations\/shadow-related-query\/index.js",
+    "generator": "WP-CLI\/2.7.1",
+    "source": "build\/shadow-related-query.js",
     "domain": "messages",
     "locale_data": {
         "messages": {

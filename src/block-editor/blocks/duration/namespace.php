@@ -11,22 +11,14 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Production_Blocks\Duration;
 
-use Figuren_Theater\Production_Blocks;
+use Figuren_Theater\Production_Blocks\Block_Loading;
 
 use function apply_filters;
-use function current_user_can;
 use function get_block_wrapper_attributes;
 use function get_post_meta;
-use function get_post_types_by_support;
-use function get_post_type_object;
 use function human_readable_duration;
-use function register_block_type;
-use function register_post_meta;
-use function wp_add_inline_script;
-use function wp_set_script_translations;
 
 use WP_Block;
-use WP_Post_Type;
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
@@ -39,80 +31,16 @@ use WP_Post_Type;
  */
 function block_init() : void {
 
-	$block      = \basename( __DIR__ );
-	$post_types = get_post_types_by_support( "theater-$block" );
-
-	if ( empty( $post_types ) ) {
-		return;
-	}
-
-	register_block_type(
-		__DIR__,
-		[
-			'render_callback' => __NAMESPACE__ . '\\render_block',
-		]
-	);
-
-	array_map(
-		function( $post_type ) {
-			register_post_meta(
-				$post_type,
-				get_meta_key(),
-				[
-					'show_in_rest'  => true,
-					'single'        => true,
-					'type'          => 'integer',
-					'auth_callback' => __NAMESPACE__ . '\\is_user_allowed_to_edit_postmeta',
-				]
-			);
-		},
-		$post_types
-	);
-
-	wp_set_script_translations(
-		"wpt-production-$block-editor-script",
-		'theater-production-blocks',
-		Production_Blocks\DIRECTORY . '/languages'
-	);
-
-	wp_add_inline_script(
-		"wpt-production-$block-editor-script",
-		"window.Theater = window.Theater || {};" .
-		"window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};" .
-		"window.Theater.ProductionBlocks.{$block} = " . json_encode( [
-			'PostMetaKey' => get_meta_key(),
-		] ) . ';',
-		'before'
-	);
-
+	Block_Loading\register_dynamic_block( __DIR__, __NAMESPACE__ );
 }
 
 \add_action( 'init', __NAMESPACE__ . '\\block_init' );
 
-
-// function is_user_allowed_to_edit_postmeta( string $post_type ) : bool {
-function is_user_allowed_to_edit_postmeta( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ) : bool {
-
-	// \do_action('qm/debug', [$allowed, $meta_key, $object_id]);
-	// \error_log(\var_export([$allowed, $meta_key, $object_id],true));
-
-	$post_type = \get_post_type( $object_id );
-	$pto = get_post_type_object( $post_type );
-
-	if ( ! $pto instanceof WP_Post_Type ) {
-		return false;
-	}
-	// return current_user_can( $pto->cap->edit_posts );
-	// return current_user_can( $pto->cap->edit_post, $object_id );
-	return current_user_can( $pto->cap->edit_post_meta, $object_id, $meta_key );
-}
-
-
-function get_meta_key() : string {
-	return apply_filters(
-		__NAMESPACE__ . '\\meta_key',
-		'_wpt_duration' // TODO could better use the wp.theater default
-	);
+function get_meta_definition() : array {
+	return [
+		'single'        => true,
+		'type'          => 'integer',
+	];
 }
 
 /**
@@ -135,7 +63,7 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
 	// which could be not correct during the edit process.
 	$duration = ( isset( $_GET['metaFieldValue'] ) && ! empty( $_GET['metaFieldValue'] ) ) ? $_GET['metaFieldValue'] : get_post_meta(
 		$block->context['postId'],
-		get_meta_key(),
+		Block_Loading\get_meta_key( __DIR__, __NAMESPACE__ ),
 		true
 	);
 
@@ -151,7 +79,7 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
 		$duration = get_reduced_human_readable_duration( $duration );
 	}
 
-	// TODO // not used at the moment, so it defaults to: div
+	// TODO // not used at the moment, so it defaults to: div !
 	$tag_name = empty( $attributes['tagName'] ) ? 'div' : $attributes['tagName'];
 
 	// Set text-align CSS class.

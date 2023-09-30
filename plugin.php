@@ -27,7 +27,6 @@
  * @todo JS: Automate build via deploy
  * @todo TXT: Add readme.md in WordPress readme.txt style
  * @todo TXT: Add CHANGELOG updates to readme.md (in WordPress readme.txt style)
- * @todo i18n: Automate i18n-json-file generation
  * @todo JS: wp.blockEditor.RichText value prop as children type is deprecated since version 6.1 and will be removed in version 6.3. Please use value prop as string instead. See: https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/introducing-attributes-and-editable-fields/ deprecated.min.js:2:628
  * @todo JS: wp.blocks.children.toHTML is deprecated since version 6.1 and will be removed in version 6.3. Please use wp.richText.toHTMLString instead. See: https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/introducing-attributes-and-editable-fields/
  * @todo JS: wp.date.__experimentalGetSettings is deprecated since version 6.1. Please use wp.date.getSettings instead.
