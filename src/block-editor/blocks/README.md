@@ -38,7 +38,7 @@ webpack.config.js
 
 ### Adding another block requires the following steps:
 
-1. From the root of the plugin, cc into the includes/block-editor/blocks directory
+1. From the root of the plugin, cd into the includes/block-editor/blocks directory
 2. Run the following command: `npx @wordpress/create-block --template ../../../assets
 3. Add a new entry point in `webpack.config.js` that points to the new block.
 4. ~~Update the `$blocks` array in the main plugin php file to include the new block.~~

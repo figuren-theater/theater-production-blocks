@@ -13,6 +13,7 @@ use function add_action;
 use function current_user_can;
 use function get_post_types_by_support;
 // use function register_block_type; // TEMP. Disabled !
+use function get_post_type;
 use function get_post_type_object;
 use function load_plugin_textdomain;
 use function plugins_url;
@@ -84,44 +85,64 @@ function static_blocks_init() {
 function dynamic_blocks_init() : void {
 
 	/**
-	 * Get list of folder from the src-directory
+	 * Get list of folders from the src-directory
 	 *
 	 * @see https://stackoverflow.com/a/52499093/585690 (scandir to only show folders, not files)
 	 */
 	$dynamic_blocks = array_map(
-		function( $dir ) {
-			return basename( $dir );
+		function( string|false $dir ) : string {
+			return ( $dir ) ? basename( $dir ) : '';
 		},
-		glob(
+		(array) glob(
 			Production_Blocks\DIRECTORY . '/src/block-editor/blocks/*',
 			GLOB_ONLYDIR
 		)
 	);
 
 	foreach ( $dynamic_blocks as $block ) {
-		require_once Production_Blocks\DIRECTORY . '/build/' . $block . '/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
+		$build_dir = Production_Blocks\DIRECTORY . '/build/' . $block;
+		$namespace = 'Figuren_Theater\Production_Blocks\\' . \ucfirst( $block );
+
+		require_once $build_dir . '/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
+		register_dynamic_block( $build_dir, $namespace );
 	}
 }
 
+/**
+ * Register multiple new server-side-rendered blocks to WordPress.
+ *
+ * @param  string $dir       Absolute path to the directory of the block.
+ * @param  string $namespace The blocks namespace.
+ *
+ * @return void
+ */
 function register_dynamic_block( string $dir, string $namespace ) : void {
 
 	$block      = \basename( $dir );
 	$post_types = get_post_types_by_support( "theater-$block" );
+	$render_fn  = $namespace . '\\render_block';
+	$callback   = $namespace . '\\get_meta_definition';
 
 	if ( empty( $post_types ) ) {
+		return;
+	}
+	if ( ! is_callable( $render_fn ) ) {
+		return;
+	}
+	if ( ! is_callable( $callback ) ) {
 		return;
 	}
 
 	register_block_type(
 		$dir,
 		[
-			'render_callback' => $namespace . '\\render_block',
+			'render_callback' => $render_fn,
 		]
 	);
 
 	$meta_key = get_meta_key( $dir, $namespace );
 	$meta_def = array_merge(
-		\call_user_func( $namespace . '\\get_meta_definition' ),
+		\call_user_func( $callback ),
 		[
 			'auth_callback' => __NAMESPACE__ . '\\is_user_allowed_to_edit_postmeta',
 			'show_in_rest'  => true,
@@ -129,7 +150,7 @@ function register_dynamic_block( string $dir, string $namespace ) : void {
 	);
 
 	array_map(
-		function( $post_type ) use ( $meta_key, $meta_def ) : void {
+		function( string $post_type ) use ( $meta_key, $meta_def ) : void {
 			register_post_meta(
 				$post_type,
 				$meta_key,
@@ -167,15 +188,27 @@ function register_dynamic_block( string $dir, string $namespace ) : void {
  */
 function is_user_allowed_to_edit_postmeta( bool $allowed, string $meta_key, int $object_id ) : bool {
 
-	$post_type = \get_post_type( $object_id );
-	$pto = get_post_type_object( $post_type );
+	$post_type = get_post_type( $object_id );
+	if ( empty( $post_type ) ) {
+		return false;
+	}
 
+	$pto = get_post_type_object( $post_type );
 	if ( ! $pto instanceof WP_Post_Type ) {
 		return false;
 	}
+
 	return current_user_can( $pto->cap->edit_post_meta, $object_id, $meta_key );
 }
 
+/**
+ * Get post_meta key by name of given blocks directory and namespace.
+ *
+ * @param  string $dir       Absolute path to the directory of the block.
+ * @param  string $namespace The blocks namespace.
+ *
+ * @return string
+ */
 function get_meta_key( string $dir, string $namespace ) : string {
 	$block = \basename( $dir );
 	return apply_filters(
@@ -212,7 +245,7 @@ function register_asset( string $asset ) : void {
 
 	$error_message = "You need to run `npm start` or `npm run build` for the '$asset' block-asset first.";
 
-	if ( ! file_exists( $script_asset_path ) ) {
+	if ( ! \file_exists( $script_asset_path ) ) {
 		if ( \in_array( wp_get_environment_type(), [ 'local', 'development' ], true ) ) {
 			throw new \Error(
 				$error_message

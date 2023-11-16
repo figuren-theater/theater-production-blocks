@@ -11,116 +11,34 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Production_Blocks\Duration;
 
-use Figuren_Theater\Production_Blocks;
+use Figuren_Theater\Production_Blocks\Block_Loading;
 
-use function apply_filters;
-use function current_user_can;
 use function get_block_wrapper_attributes;
 use function get_post_meta;
-use function get_post_types_by_support;
-use function get_post_type_object;
 use function human_readable_duration;
-use function register_block_type;
-use function register_post_meta;
-use function wp_add_inline_script;
-use function wp_set_script_translations;
+use function sanitize_text_field;
+use function wp_unslash;
 
 use WP_Block;
-use WP_Post_Type;
 
 /**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
+ * Get type definition of current blocks post_meta to be used for register_post_meta().
  *
- * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/writing-your-first-block-type/
- *
- * @return void
+ * @return array<string, boolean|string>
  */
-function block_init() : void {
-
-	$block      = \basename( __DIR__ );
-	$post_types = get_post_types_by_support( "theater-$block" );
-
-	if ( empty( $post_types ) ) {
-		return;
-	}
-
-	register_block_type(
-		__DIR__,
-		[
-			'render_callback' => __NAMESPACE__ . '\\render_block',
-		]
-	);
-
-	array_map(
-		function( $post_type ) {
-			register_post_meta(
-				$post_type,
-				get_meta_key(),
-				[
-					'show_in_rest'  => true,
-					'single'        => true,
-					'type'          => 'integer',
-					'auth_callback' => __NAMESPACE__ . '\\is_user_allowed_to_edit_postmeta',
-				]
-			);
-		},
-		$post_types
-	);
-
-	wp_set_script_translations(
-		"wpt-production-$block-editor-script",
-		'theater-production-blocks',
-		Production_Blocks\DIRECTORY . '/languages'
-	);
-
-	wp_add_inline_script(
-		"wpt-production-$block-editor-script",
-		"window.Theater = window.Theater || {};" .
-		"window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};" .
-		"window.Theater.ProductionBlocks.{$block} = " . json_encode( [
-			'PostMetaKey' => get_meta_key(),
-		] ) . ';',
-		'before'
-	);
-
-}
-
-\add_action( 'init', __NAMESPACE__ . '\\block_init' );
-
-
-// function is_user_allowed_to_edit_postmeta( string $post_type ) : bool {
-function is_user_allowed_to_edit_postmeta( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ) : bool {
-
-	// \do_action('qm/debug', [$allowed, $meta_key, $object_id]);
-	// \error_log(\var_export([$allowed, $meta_key, $object_id],true));
-
-	$post_type = \get_post_type( $object_id );
-	$pto = get_post_type_object( $post_type );
-
-	if ( ! $pto instanceof WP_Post_Type ) {
-		return false;
-	}
-	// return current_user_can( $pto->cap->edit_posts );
-	// return current_user_can( $pto->cap->edit_post, $object_id );
-	return current_user_can( $pto->cap->edit_post_meta, $object_id, $meta_key );
-}
-
-
-function get_meta_key() : string {
-	return apply_filters(
-		__NAMESPACE__ . '\\meta_key',
-		'_wpt_duration' // TODO could better use the wp.theater default
-	);
+function get_meta_definition() : array {
+	return [
+		'single' => true,
+		'type'   => 'integer',
+	];
 }
 
 /**
  * Renders the `theater-production-duration` block on the server.
  *
- * @param array<string, mixed> $attributes Block attributes.
- * @param string               $content    Block default content.
- * @param WP_Block             $block      Block instance.
+ * @param array<string, string|int> $attributes Block attributes.
+ * @param string                    $content    Block default content.
+ * @param WP_Block                  $block      Block instance.
  *
  * @return string
  */
@@ -129,17 +47,7 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
 		return '';
 	}
 
-	// Using the '$attributes['metaFieldValue']' helps the <ServerSideRenderer>
-	// to show up-to-date results
-	// otherwise it would use the saved post_meta
-	// which could be not correct during the edit process.
-	$duration = ( isset( $_GET['metaFieldValue'] ) && ! empty( $_GET['metaFieldValue'] ) ) ? $_GET['metaFieldValue'] : get_post_meta(
-		$block->context['postId'],
-		get_meta_key(),
-		true
-	);
-
-	$duration = \intval( $duration );
+	$duration = get_duration( $block );
 
 	if ( 0 === $duration ) {
 		return '';
@@ -151,11 +59,14 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
 		$duration = get_reduced_human_readable_duration( $duration );
 	}
 
-	// TODO // not used at the moment, so it defaults to: div
+	// TODO // not used at the moment, so it defaults to: div !
 	$tag_name = empty( $attributes['tagName'] ) ? 'div' : $attributes['tagName'];
 
 	// Set text-align CSS class.
-	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
+	$align_class_name = empty( $attributes['textAlign'] ) ? '' : sprintf(
+		'has-text-align-%s',
+		(string) $attributes['textAlign']
+	);
 
 	// Get and merge wrapper attributes with text-align CSS class.
 	$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => $align_class_name ] );
@@ -171,6 +82,44 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
 		$wrapper_attributes,
 		$prefix . $duration . $suffix
 	);
+}
+
+/**
+ * Get duration from either post_meta or the current user-input.
+ *
+ * @param  WP_Block $block The block (~s parent post) to get the post_meta from.
+ *
+ * @return int
+ */
+function get_duration( WP_Block $block ) : int {
+
+	$meta_field_value = false;
+
+	if ( isset( $_GET['metaFieldValue'] )
+	&& ! empty( $_GET['metaFieldValue'] )
+	&& \is_string( $_GET['metaFieldValue'] )
+	) {
+		// Check nonce for security.
+		#if ( check_admin_referer( 'update-post_' . $block->context['postId'] ) ) {
+		// if ( check_ajax_referer( 'update-post_' . $block->context['postId'] ) ) {
+			$meta_field_value = sanitize_text_field( wp_unslash( $_GET['metaFieldValue'] ) );
+		// }
+	}
+
+	// Using the '$_GET['metaFieldValue']' helps the <ServerSideRenderer>
+	// to show up-to-date results
+	// otherwise it would use the saved post_meta
+	// which could be not correct during the edit process.
+	$duration = ( $meta_field_value ) ? $meta_field_value : get_post_meta(
+		$block->context['postId'],
+		Block_Loading\get_meta_key( __DIR__, __NAMESPACE__ ),
+		true
+	);
+
+	// Cast to string - for type-safety, the terminator way.
+	$duration = $duration . '';
+
+	return \intval( $duration );
 }
 
 /**
