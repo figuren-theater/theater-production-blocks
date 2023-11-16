@@ -29,7 +29,7 @@
         "source": "https://github.com/figuren-theater/theater-production-blocks"
     },
     "require-dev": {
-        "figuren-theater/code-quality": "^0.8.1"
+        "figuren-theater/code-quality": "*"
     },
     "suggest": {
         "wpackagist-plugin/theater": "Even this plugin can be used standalone, it will be nicer & easier together with the WordPress 'Theater' plugin."

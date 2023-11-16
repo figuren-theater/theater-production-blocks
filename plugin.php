@@ -38,9 +38,13 @@ use function add_action;
 
 const DIRECTORY = __DIR__;
 
-// TEMP needed
-require_once DIRECTORY . '/inc/block-loading/namespace.php';
-require_once DIRECTORY . '/inc/registration/namespace.php';
-require_once DIRECTORY . '/inc/namespace.php';
+/**
+ * REMOVE
+ *
+ * @todo #5 Add composer autoloading strategy
+ */
+require_once DIRECTORY . '/inc/block-loading/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
+require_once DIRECTORY . '/inc/registration/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
+require_once DIRECTORY . '/inc/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 
 add_action( 'init', __NAMESPACE__ . '\\register', 0 );

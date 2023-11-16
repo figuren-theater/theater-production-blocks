@@ -10,6 +10,10 @@
 	<!-- Use figuren.theater Coding Standards -->
 	<rule ref="figurentheater" />
 
+	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>*/src/*</exclude-pattern>
+	</rule>
+
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
