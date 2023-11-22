@@ -95,7 +95,7 @@ function get_duration( WP_Block $block ): int {
 
 	$meta_field_value = false;
 	// Check nonce for security.
-	if ( ( \defined( 'DOING_AJAX' ) && \constant( 'DOING_AJAX' ) ) 
+	if ( ( \defined( 'DOING_AJAX' ) && \DOING_AJAX ) 
 	&& false !== \check_ajax_referer( 'update-post_' . $block->context['postId'], '_wpnonce' )
 	&& isset( $_GET['metaFieldValue'] )
 	&& ! empty( $_GET['metaFieldValue'] )

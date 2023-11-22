@@ -13,4 +13,6 @@ parameters:
             - node_modules/
         analyse:
             - vendor/
+    dynamicConstantNames:
+        - DOING_AJAX
 
