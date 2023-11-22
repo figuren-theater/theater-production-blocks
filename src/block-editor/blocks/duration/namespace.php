@@ -12,21 +12,21 @@ declare(strict_types=1);
 namespace Figuren_Theater\Production_Blocks\Duration;
 
 use Figuren_Theater\Production_Blocks\Block_Loading;
-
+use WP_Block;
 use function get_block_wrapper_attributes;
 use function get_post_meta;
 use function human_readable_duration;
 use function sanitize_text_field;
 use function wp_unslash;
 
-use WP_Block;
+
 
 /**
  * Get type definition of current blocks post_meta to be used for register_post_meta().
  *
  * @return array<string, boolean|string>
  */
-function get_meta_definition() : array {
+function get_meta_definition(): array {
 	return [
 		'single' => true,
 		'type'   => 'integer',
@@ -42,7 +42,7 @@ function get_meta_definition() : array {
  *
  * @return string
  */
-function render_block( array $attributes, string $content, WP_Block $block ) : string {
+function render_block( array $attributes, string $content, WP_Block $block ): string {
 	if ( ! isset( $block->context['postId'] ) ) {
 		return '';
 	}
@@ -91,16 +91,18 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
  *
  * @return int
  */
-function get_duration( WP_Block $block ) : int {
+function get_duration( WP_Block $block ): int {
 
 	$meta_field_value = false;
-
-	if ( isset( $_GET['metaFieldValue'] )
+	// Check nonce for security.
+	// if ( check_admin_referer( 'update-post_' . $block->context['postId'] ) ) {
+	if ( \check_ajax_referer( 'update-post_' . $block->context['postId'] )
+	&& isset( $_GET['metaFieldValue'] )
 	&& ! empty( $_GET['metaFieldValue'] )
 	&& \is_string( $_GET['metaFieldValue'] )
 	) {
 		// Check nonce for security.
-		#if ( check_admin_referer( 'update-post_' . $block->context['postId'] ) ) {
+		// if ( check_admin_referer( 'update-post_' . $block->context['postId'] ) ) {
 		// if ( check_ajax_referer( 'update-post_' . $block->context['postId'] ) ) {
 			$meta_field_value = sanitize_text_field( wp_unslash( $_GET['metaFieldValue'] ) );
 		// }
@@ -125,11 +127,11 @@ function get_duration( WP_Block $block ) : int {
 /**
  * Transform a given duration in a human readable way and remove useless values like '00 hours' or '00 seconds'.
  *
- * @param  int    $duration The given duration in minutes.
+ * @param  int $duration The given duration in minutes.
  *
  * @return string A text saying sth. like for eg.: "2 hours and 45 minutes" for a given duration of 165.
  */
-function get_reduced_human_readable_duration( int $duration ) : string {
+function get_reduced_human_readable_duration( int $duration ): string {
 
 	// Get "1 hour 20 minutes 20 seconds"
 	// from wp, based on our given "123" minutes.

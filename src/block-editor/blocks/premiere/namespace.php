@@ -12,20 +12,19 @@ declare(strict_types=1);
 namespace Figuren_Theater\Production_Blocks\Premiere;
 
 use Figuren_Theater\Production_Blocks\Block_Loading;
-
+use WP_Block;
 use function date_i18n;
 use function get_block_wrapper_attributes;
 use function get_option;
 use function get_post_meta;
 
-use WP_Block;
 
 /**
  * Get type definition of current blocks post_meta to be used for register_post_meta().
  *
  * @return array<string, boolean|string>
  */
-function get_meta_definition() : array {
+function get_meta_definition(): array {
 	return [
 		'single' => true,
 		'type'   => 'string',
@@ -40,7 +39,7 @@ function get_meta_definition() : array {
  *
  * @return string
  */
-function render_block( array $attributes, string $content, WP_Block $block ) : string {
+function render_block( array $attributes, string $content, WP_Block $block ): string {
 	if ( ! isset( $block->context['postId'] ) ) {
 		return '';
 	}
@@ -59,7 +58,7 @@ function render_block( array $attributes, string $content, WP_Block $block ) : s
 	// Cast to string - for type-safety, the terminator way.
 	$date_format = $date_format . '';
 	
-	$premiere    = date_i18n( $date_format, strtotime( $premiere ) );
+	$premiere = date_i18n( $date_format, strtotime( $premiere ) );
 
 	// TODO // not used at the moment, so it defaults to: div !
 	$tag_name = empty( $attributes['tagName'] ) ? 'p' : $attributes['tagName'];

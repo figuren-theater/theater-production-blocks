@@ -1,10 +1,9 @@
-// export default ()=>{
 /**
  * A helper function for getting post meta by key.
  *
- * @param          meta
+ * @param {Array}  meta
  * @param {string} key  - The meta key to read.
- * @return {*} - Meta value.
+ * @return {string} - Meta value.
  */
 export const getPostMeta = (meta, key) => meta[key] || '';
 
@@ -14,15 +13,13 @@ export const getPostMeta = (meta, key) => meta[key] || '';
  *
  * Important! Don't forget to register_post_meta (see ../index.php).
  *
- * @param          meta
- * @param {string} key     - The meta key to update.
- * @param {*}      value   - The meta value to update.
- * @param          setMeta
+ * @param {Array}    meta
+ * @param {string}   key     - The meta key to update.
+ * @param {*}        value   - The meta value to update.
+ * @param {Function} setMeta
  */
 export const setPostMeta = (meta, key, value, setMeta) =>
 	setMeta({
 		...meta,
 		[key]: value,
 	});
-
-//}

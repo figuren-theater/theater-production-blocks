@@ -15,7 +15,7 @@ use function apply_filters;
  *
  * @return string[]
  */
-function get_post_types() : array {
+function get_post_types(): array {
 	/**
 	 * Select which post_types the production blocks should be loaded for.
 	 *
@@ -34,7 +34,7 @@ function get_post_types() : array {
  *
  * @return string
  */
-function get_production_post_type() : string {
+function get_production_post_type(): string {
 	/**
 	 * Use the 'production-post-type' of the WordPress 'theater' plugin as a default.
 	 *
@@ -55,7 +55,7 @@ function get_production_post_type() : string {
  *
  * @return string[]
  */
-function get_post_type_supports( string $post_type ) : array {
+function get_post_type_supports( string $post_type ): array {
 	/**
 	 * Filter post_type_supports per post_type.
 	 *
@@ -80,9 +80,9 @@ function get_post_type_supports( string $post_type ) : array {
  *
  * @return void
  */
-function add_post_type_supports( string $post_type ) : void {
+function add_post_type_supports( string $post_type ): void {
 	\array_map(
-		function ( $post_type_support ) use ( $post_type ) : void {
+		function ( $post_type_support ) use ( $post_type ): void {
 			add_post_type_support( $post_type, "theater-$post_type_support" );
 		},
 		get_post_type_supports( $post_type )

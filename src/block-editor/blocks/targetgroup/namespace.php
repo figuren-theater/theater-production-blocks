@@ -12,18 +12,16 @@ declare(strict_types=1);
 namespace Figuren_Theater\Production_Blocks\Targetgroup;
 
 use Figuren_Theater\Production_Blocks\Block_Loading;
-
+use WP_Block;
 use function get_block_wrapper_attributes;
 use function get_post_meta;
-
-use WP_Block;
 
 /**
  * Get type definition of current blocks post_meta to be used for register_post_meta().
  *
  * @return array<string, boolean|string>
  */
-function get_meta_definition() : array {
+function get_meta_definition(): array {
 	return [
 		'single' => true,
 		'type'   => 'string',
@@ -38,7 +36,7 @@ function get_meta_definition() : array {
  *
  * @return string
  */
-function render_block( array $attributes, string $content, WP_Block $block ) : string {
+function render_block( array $attributes, string $content, WP_Block $block ): string {
 	if ( ! isset( $block->context['postId'] ) ) {
 		return '';
 	}

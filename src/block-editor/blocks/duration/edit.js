@@ -17,7 +17,9 @@ import { __ } from '@wordpress/i18n';
 // taken from https://developer.wordpress.org/block-editor/how-to-guides/metabox/
 import {
 	__experimentalNumberControl as NumberControl,
-	__experimentalHStack as HStack,
+	TextControl,
+	Flex,
+	FlexItem,
 	ToggleControl,
 } from '@wordpress/components';
 
@@ -160,14 +162,19 @@ export default function Edit({
 				{humanReadable && !isSelected ? (
 					<DurationServerSideRender />
 				) : (
-					<HStack justify={textAlign}>
-						<Prefix
-							prefix={prefix}
-							isSelected={isSelected}
-							setAttributes={setAttributes}
-						/>
-						<span>
-							<NumberControl
+					<Flex
+						justify="space-around"
+					>
+						<FlexItem>
+							<Prefix
+								prefix={prefix}
+								isSelected={isSelected}
+								setAttributes={setAttributes}
+							/>
+						</FlexItem>
+						<FlexItem>
+							<TextControl
+								type="number"
 								isShiftStepEnabled
 								shiftStep="5"
 								step="5"
@@ -175,14 +182,19 @@ export default function Edit({
 								placeholder="80"
 								value={metaFieldValue}
 								onChange={updateMetaValue}
+								fontSize="initial"
+								width="max-content"
+								style={{ all: "inherit" }}
 							/>
-						</span>
-						<Suffix
-							suffix={suffix}
-							isSelected={isSelected}
-							setAttributes={setAttributes}
-						/>
-					</HStack>
+						</FlexItem>
+						<FlexItem>
+							<Suffix
+								suffix={suffix}
+								isSelected={isSelected}
+								setAttributes={setAttributes}
+							/>
+						</FlexItem>
+					</Flex>
 				)}
 			</div>
 		</>

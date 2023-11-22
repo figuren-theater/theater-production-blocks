@@ -12,7 +12,7 @@ namespace Figuren_Theater\Production_Blocks;
  *
  * @return void
  */
-function register() :void {
+function register(): void {
 
 	$post_types = Registration\get_post_types();
 
@@ -33,7 +33,7 @@ function register() :void {
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	/**
 	 * Automatically load Plugins.
