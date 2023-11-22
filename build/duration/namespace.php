@@ -95,17 +95,13 @@ function get_duration( WP_Block $block ): int {
 
 	$meta_field_value = false;
 	// Check nonce for security.
-	// if ( check_admin_referer( 'update-post_' . $block->context['postId'] ) ) {
-	if ( \check_ajax_referer( 'update-post_' . $block->context['postId'] )
+	if ( ( \defined( 'DOING_AJAX' ) && \constant( 'DOING_AJAX' ) ) 
+	&& false !== \check_ajax_referer( 'update-post_' . $block->context['postId'], '_wpnonce' )
 	&& isset( $_GET['metaFieldValue'] )
 	&& ! empty( $_GET['metaFieldValue'] )
 	&& \is_string( $_GET['metaFieldValue'] )
 	) {
-		// Check nonce for security.
-		// if ( check_admin_referer( 'update-post_' . $block->context['postId'] ) ) {
-		// if ( check_ajax_referer( 'update-post_' . $block->context['postId'] ) ) {
-			$meta_field_value = sanitize_text_field( wp_unslash( $_GET['metaFieldValue'] ) );
-		// }
+		$meta_field_value = sanitize_text_field( wp_unslash( $_GET['metaFieldValue'] ) );
 	}
 
 	// Using the '$_GET['metaFieldValue']' helps the <ServerSideRenderer>
