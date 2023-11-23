@@ -1,0 +1,21 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+.wp-block-wpt-production-duration {
+	// non-existent pseudo selector
+	.components-input-control {
+
+		&__container {
+			background: 0;
+		}
+
+		&__input {
+			all: inherit !important;
+		}
+
+		&__backdrop {
+			border: 0 !important;
+		}
+	}
+}
+

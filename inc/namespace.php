@@ -12,12 +12,20 @@ namespace Figuren_Theater\Production_Blocks;
  *
  * @return void
  */
-function register() :void {
+function register(): void {
+
+	$post_types = Registration\get_post_types();
+
+	if ( empty( $post_types ) ) {
+		return;
+	}
 
 	\array_map(
 		__NAMESPACE__ . '\\Registration\\add_post_type_supports',
-		Registration\get_post_types()
+		$post_types
 	);
+
+	Block_Loading\bootstrap(); // Should run on init|0 or earlier.
 }
 
 /**
@@ -25,7 +33,7 @@ function register() :void {
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	/**
 	 * Automatically load Plugins.

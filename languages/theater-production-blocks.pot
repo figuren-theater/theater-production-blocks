@@ -1,0 +1,148 @@
+# Copyright (C) 2023 figuren.theater
+# This file is distributed under the GPL-3.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Theater Production Blocks 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/theater-production-blocks\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-09-29T23:53:37+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: theater-production-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Theater Production Blocks"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/figuren-theater/theater-production-blocks"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress blocks for theater productions to be used with the Site- and Block-Editor."
+msgstr ""
+
+#. Author of the plugin
+msgid "figuren.theater"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://figuren.theater"
+msgstr ""
+
+#: build/document-setting-panel.js:1
+#: src/block-editor/plugins/document-setting-panel/index.js:63
+msgid "Production Meta"
+msgstr ""
+
+#: build/document-setting-panel.js:1
+#: src/block-editor/plugins/document-setting-panel/index.js:69
+msgid "Premiere Date"
+msgstr ""
+
+#: build/document-setting-panel.js:1
+#: build/premiere/premiere.js:1
+#: src/block-editor/blocks/premiere/edit.js:113
+#: src/block-editor/plugins/document-setting-panel/index.js:78
+msgid "Choose a Date"
+msgstr ""
+
+#: build/document-setting-panel.js:1
+#: build/targetgroup/targetgroup.js:1
+#: src/block-editor/blocks/targetgroup/edit.js:98
+#: src/block-editor/plugins/document-setting-panel/index.js:85
+msgid "Targetgroup"
+msgstr ""
+
+#: build/document-setting-panel.js:1
+#: src/block-editor/plugins/document-setting-panel/index.js:93
+msgid "Duration"
+msgstr ""
+
+#: build/document-setting-panel.js:1
+#: src/block-editor/plugins/document-setting-panel/index.js:108
+msgid "Add the duration in Minutes."
+msgstr ""
+
+#: build/duration/duration.js:1
+#: build/premiere/premiere.js:1
+#: build/targetgroup/targetgroup.js:1
+#: src/utils/pre-suf-fix.js:19
+#: src/utils/pre-suf-fix.js:21
+msgid "Prefix"
+msgstr ""
+
+#: build/duration/duration.js:1
+#: build/premiere/premiere.js:1
+#: build/targetgroup/targetgroup.js:1
+#: src/utils/pre-suf-fix.js:55
+#: src/utils/pre-suf-fix.js:57
+msgid "Suffix"
+msgstr ""
+
+#: build/duration/duration.js:1
+#: src/block-editor/blocks/duration/index.js:31
+#: build/duration/block.json
+#: src/block-editor/blocks/duration/block.json
+msgctxt "block title"
+msgid "Duration"
+msgstr ""
+
+#: build/duration/duration.js:1
+#: src/block-editor/blocks/duration/index.js:32
+#: build/duration/block.json
+#: src/block-editor/blocks/duration/block.json
+msgctxt "block description"
+msgid "Shows duration of current production."
+msgstr ""
+
+#: build/duration/duration.js:1
+#: src/block-editor/blocks/duration/edit.js:127
+msgid "Show human readable duration."
+msgstr ""
+
+#: build/duration/duration.js:1
+#: src/block-editor/blocks/duration/edit.js:137
+msgid "Shows e.g. \"2 hours 10 minutes\"."
+msgstr ""
+
+#: build/duration/duration.js:1
+#: src/block-editor/blocks/duration/edit.js:141
+msgid "Shows pure \"130\" minutes only."
+msgstr ""
+
+#: build/premiere/premiere.js:1
+#: src/block-editor/blocks/premiere/index.js:31
+#: build/premiere/block.json
+#: src/block-editor/blocks/premiere/block.json
+msgctxt "block title"
+msgid "Premiere"
+msgstr ""
+
+#: build/premiere/premiere.js:1
+#: src/block-editor/blocks/premiere/index.js:32
+#: build/premiere/block.json
+#: src/block-editor/blocks/premiere/block.json
+msgctxt "block description"
+msgid "Show Premiere Date of production."
+msgstr ""
+
+#: build/targetgroup/targetgroup.js:1
+#: src/block-editor/blocks/targetgroup/index.js:31
+#: build/targetgroup/block.json
+#: src/block-editor/blocks/targetgroup/block.json
+msgctxt "block title"
+msgid "Targetgroup"
+msgstr ""
+
+#: build/targetgroup/targetgroup.js:1
+#: src/block-editor/blocks/targetgroup/index.js:32
+#: build/targetgroup/block.json
+#: src/block-editor/blocks/targetgroup/block.json
+msgctxt "block description"
+msgid "Shows targetgroup of current production."
+msgstr ""

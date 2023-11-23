@@ -3,12 +3,30 @@
 	<description>Coding standards for theater-production-blocks</description>
 
 	<file>.</file>
+	<arg name="basepath" value="./"/><!-- Strip the file paths down to the relevant bit -->
 
 	<exclude-pattern>*/build/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- Use figuren.theater Coding Standards -->
 	<rule ref="figurentheater" />
+
+	<!-- <rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>*/src/*</exclude-pattern>
+	</rule> -->
+
+	<!-- <rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>*/src/*</exclude-pattern>
+	</rule> -->
+
+	<rule ref="Universal">
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
+		<exclude name="Universal.Namespaces.EnforceCurlyBraceSyntax" />
+		<exclude name="Universal.UseStatements.DisallowUseClass.FoundWithoutAlias" />
+		<exclude name="Universal.UseStatements.DisallowUseClass.FromGlobalNamespace" />
+		<exclude name="Universal.UseStatements.DisallowUseFunction.FromGlobalNamespace" />
+		<exclude name="Universal.ControlStructures.IfElseDeclaration.NoNewLine" />
+	</rule>
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
@@ -17,5 +35,16 @@
 			</property>
 		</properties>
 	</rule>
+	
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="wpt"/>
+				<element value="Figuren_Theater"/>
+				<element value="__NAMESPACE__"/>
+			</property>
 
+		</properties>
+	</rule>
+	
 </ruleset>
