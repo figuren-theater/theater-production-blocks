@@ -16,7 +16,6 @@ import { __ } from '@wordpress/i18n';
 
 // taken from https://developer.wordpress.org/block-editor/how-to-guides/metabox/
 import {
-	__experimentalNumberControl as NumberControl,
 	TextControl,
 	Flex,
 	FlexItem,
@@ -50,7 +49,7 @@ import './editor.scss';
 /**
  * Internal dependencies
  */
-import { DURATION_META } from '../../../utils/constants.js';
+const DURATION_META = window.Theater.ProductionBlocks.duration.PostMetaKey;
 import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js';
 
 /**
@@ -162,9 +161,7 @@ export default function Edit({
 				{humanReadable && !isSelected ? (
 					<DurationServerSideRender />
 				) : (
-					<Flex
-						justify="space-around"
-					>
+					<Flex justify="space-around">
 						<FlexItem>
 							<Prefix
 								prefix={prefix}
@@ -184,7 +181,7 @@ export default function Edit({
 								onChange={updateMetaValue}
 								fontSize="initial"
 								width="max-content"
-								style={{ all: "inherit" }}
+								style={{ all: 'inherit' }}
 							/>
 						</FlexItem>
 						<FlexItem>

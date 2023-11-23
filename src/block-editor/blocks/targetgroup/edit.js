@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * WordPress dependencies
  */
-import { __experimentalHStack as HStack } from '@wordpress/components';
+import { Flex, FlexItem } from '@wordpress/components';
 
 // taken from https://developer.wordpress.org/block-editor/how-to-guides/metabox/
 import { useEntityProp } from '@wordpress/core-data';
@@ -33,7 +33,8 @@ import {
 /**
  * Internal dependencies
  */
-import { TARGETGROUP_META } from '../../../utils/constants.js';
+const TARGETGROUP_META =
+	window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
 import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js';
 
 /**
@@ -85,27 +86,33 @@ export default function Edit({
 				/>
 			</BlockControls>
 			<div {...blockProps}>
-				<HStack justify={textAlign}>
-					<Prefix
-						prefix={prefix}
-						isSelected={isSelected}
-						setAttributes={setAttributes}
-					/>
-					<RichText
-						tagName="p"
-						value={metaFieldValue}
-						onChange={updateMetaValue}
-						placeholder={__(
-							'Targetgroup',
-							'theater-production-blocks'
-						)}
-					/>
-					<Suffix
-						suffix={suffix}
-						isSelected={isSelected}
-						setAttributes={setAttributes}
-					/>
-				</HStack>
+				<Flex justify="space-around">
+					<FlexItem>
+						<Prefix
+							prefix={prefix}
+							isSelected={isSelected}
+							setAttributes={setAttributes}
+						/>
+					</FlexItem>
+					<FlexItem>
+						<RichText
+							tagName="p"
+							value={metaFieldValue}
+							onChange={updateMetaValue}
+							placeholder={__(
+								'Targetgroup',
+								'theater-production-blocks'
+							)}
+						/>
+					</FlexItem>
+					<FlexItem>
+						<Suffix
+							suffix={suffix}
+							isSelected={isSelected}
+							setAttributes={setAttributes}
+						/>
+					</FlexItem>
+				</Flex>
 			</div>
 		</>
 	);

@@ -1,13 +1,11 @@
-//
 // export const DURATION_META    = '_theatre_base_prod_and_event__duration';
-export const DURATION_META =
-	window.Theater.ProductionBlocks.duration.PostMetaKey;
+// export const DURATION_META = window.Theater.ProductionBlocks.duration.PostMetaKey;
 
-//
-export const PREMIERE_META = '_theatre_base_prod_and_event__premiere';
+// export const PREMIERE_META = '_theatre_base_prod_and_event__premiere';
+// export const PREMIERE_META = window.Theater.ProductionBlocks.premiere.PostMetaKey;
 
-//
-export const TARGETGROUP_META = '_theatre_base_prod_and_event__targetgroup';
+// export const TARGETGROUP_META = '_theatre_base_prod_and_event__targetgroup';
+// export const TARGETGROUP_META = window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
 
 export const PT_PRODUCTION = 'ft_production';
 

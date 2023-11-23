@@ -8,11 +8,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * WordPress dependencies.
  */
-import {
-	__experimentalNumberControl as NumberControl,
-	// __experimentalInputControl as InputControl,
-	TextControl,
-} from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
 
 import { useEntityProp } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
@@ -21,20 +17,20 @@ import { registerPlugin } from '@wordpress/plugins';
 
 import { RichText } from '@wordpress/block-editor';
 
+import { getSettings } from '@wordpress/date';
+
 /**
  * Internal dependencies
  */
 
-import { __experimentalGetSettings } from '@wordpress/date';
-
 import DateSelect from '../../../utils/date-select';
 
-import {
-	DURATION_META,
-	PREMIERE_META,
-	TARGETGROUP_META,
-	PT_PRODUCTION,
-} from '../../../utils/constants.js';
+import { PT_PRODUCTION } from '../../../utils/constants.js';
+const DURATION_META = window.Theater.ProductionBlocks.duration.PostMetaKey;
+const PREMIERE_META = window.Theater.ProductionBlocks.premiere.PostMetaKey;
+const TARGETGROUP_META =
+	window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
+
 // import { getPostMeta, setPostMeta } from '../../../utils/helper.js'
 
 const ProductionDocumentSettingPanel = () => {
@@ -44,10 +40,6 @@ const ProductionDocumentSettingPanel = () => {
 		[]
 	);
 
-	if (PT_PRODUCTION !== post.type) return '';
-
-	const settings = __experimentalGetSettings();
-
 	// Get the value of meta and a function for updating meta from useEntityProp.
 	const [meta, setMeta] = useEntityProp(
 		'postType',
@@ -55,6 +47,10 @@ const ProductionDocumentSettingPanel = () => {
 		'meta',
 		post.id
 	);
+
+	if (PT_PRODUCTION !== post.type) return '';
+
+	const settings = getSettings();
 
 	return (
 		<PluginDocumentSettingPanel
@@ -88,9 +84,9 @@ const ProductionDocumentSettingPanel = () => {
 						setMeta({ ...meta, [TARGETGROUP_META]: newValue });
 					}}
 				/>
-
-				<NumberControl
+				<TextControl
 					label={__('Duration', 'theater-production-blocks')}
+					type="number"
 					isShiftStepEnabled
 					shiftStep="5"
 					step="5"

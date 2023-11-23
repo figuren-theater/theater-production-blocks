@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
  * WordPress dependencies
  */
 
-import { __experimentalHStack as HStack } from '@wordpress/components';
+import { Flex, FlexItem } from '@wordpress/components';
 
 // taken from https://developer.wordpress.org/block-editor/how-to-guides/metabox/
 import { useEntityProp } from '@wordpress/core-data';
@@ -34,11 +34,11 @@ import {
 /**
  * Internal dependencies
  */
-import { __experimentalGetSettings, dateI18n } from '@wordpress/date';
+import { getSettings } from '@wordpress/date';
 
 import DateSelect from '../../../utils/date-select';
 
-import { PREMIERE_META } from '../../../utils/constants.js';
+const PREMIERE_META = window.Theater.ProductionBlocks.premiere.PostMetaKey;
 import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js';
 
 /**
@@ -66,7 +66,7 @@ export default function Edit({
 	isSelected,
 	context: { postType, postId },
 }) {
-	const settings = __experimentalGetSettings();
+	const settings = getSettings();
 
 	const blockProps = useBlockProps({
 		className: classnames({
@@ -91,13 +91,15 @@ export default function Edit({
 				/>
 			</BlockControls>
 			<div {...blockProps}>
-				<HStack justify={textAlign}>
-					<Prefix
-						prefix={prefix}
-						isSelected={isSelected}
-						setAttributes={setAttributes}
-					/>
-					<div className="event__time">
+				<Flex justify="space-around">
+					<FlexItem>
+						<Prefix
+							prefix={prefix}
+							isSelected={isSelected}
+							setAttributes={setAttributes}
+						/>
+					</FlexItem>
+					<FlexItem className="event__time">
 						{metaFieldValue && !isSelected ? (
 							<DateSelect.Content
 								className="event__date-select"
@@ -116,13 +118,15 @@ export default function Edit({
 								)}
 							/>
 						)}
-					</div>
-					<Suffix
-						suffix={suffix}
-						isSelected={isSelected}
-						setAttributes={setAttributes}
-					/>
-				</HStack>
+					</FlexItem>
+					<FlexItem>
+						<Suffix
+							suffix={suffix}
+							isSelected={isSelected}
+							setAttributes={setAttributes}
+						/>
+					</FlexItem>
+				</Flex>
 			</div>
 		</>
 	);
