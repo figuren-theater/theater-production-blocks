@@ -18,4 +18,4 @@ jobs:
       # https://github.com/swissspidy/wp-plugin-check-action#usage
       with:
         # build-dir: './my-awesome-plugin'
-        exclude-directories: 'vendor, node_modules'
+        exclude-directories: 'vendor,node_modules'
