@@ -229,8 +229,7 @@ function save() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ALLOWED_PRE_SUF_FIX_FORMATS: function() { return /* binding */ ALLOWED_PRE_SUF_FIX_FORMATS; },
-/* harmony export */   PT_SUBSITE: function() { return /* binding */ PT_SUBSITE; }
+/* harmony export */   ALLOWED_PRE_SUF_FIX_FORMATS: function() { return /* binding */ ALLOWED_PRE_SUF_FIX_FORMATS; }
 /* harmony export */ });
 // export const DURATION_META    = '_theatre_base_prod_and_event__duration';
 // export const DURATION_META = window.Theater.ProductionBlocks.duration.PostMetaKey;
@@ -242,7 +241,7 @@ __webpack_require__.r(__webpack_exports__);
 // export const TARGETGROUP_META = window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
 
 // export const PT_PRODUCTION = 'ft_production';
-const PT_SUBSITE = 'tb_prod_subsite';
+// export const PT_SUBSITE	   = 'tb_prod_subsite';
 
 // export const TAX_PRODUCTION_SHADOW = 'ft_production_shadow';
 

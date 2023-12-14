@@ -29,40 +29,6 @@ const moveTo = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)
 
 /***/ }),
 
-/***/ "./src/utils/constants.js":
-/*!********************************!*\
-  !*** ./src/utils/constants.js ***!
-  \********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ALLOWED_PRE_SUF_FIX_FORMATS: function() { return /* binding */ ALLOWED_PRE_SUF_FIX_FORMATS; },
-/* harmony export */   PT_SUBSITE: function() { return /* binding */ PT_SUBSITE; }
-/* harmony export */ });
-// export const DURATION_META    = '_theatre_base_prod_and_event__duration';
-// export const DURATION_META = window.Theater.ProductionBlocks.duration.PostMetaKey;
-
-// export const PREMIERE_META = '_theatre_base_prod_and_event__premiere';
-// export const PREMIERE_META = window.Theater.ProductionBlocks.premiere.PostMetaKey;
-
-// export const TARGETGROUP_META = '_theatre_base_prod_and_event__targetgroup';
-// export const TARGETGROUP_META = window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
-
-// export const PT_PRODUCTION = 'ft_production';
-const PT_SUBSITE = 'tb_prod_subsite';
-
-// export const TAX_PRODUCTION_SHADOW = 'ft_production_shadow';
-
-// Allowed formats for the prefix and suffix fields.
-const ALLOWED_PRE_SUF_FIX_FORMATS = ['core/bold', 'core/image', 'core/italic',
-// 'core/link',
-// 'core/strikethrough',
-'core/text-color'];
-
-/***/ }),
-
 /***/ "./node_modules/lodash.assign/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/lodash.assign/index.js ***!
@@ -869,7 +835,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_assign__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_assign__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/move-to.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/move-to.js");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
@@ -878,7 +844,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _utils_constants_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils/constants.js */ "./src/utils/constants.js");
 
 
 
@@ -911,7 +876,6 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
-
 const PT_PRODUCTION = window.Theater.ProductionPosttype.Slug;
 const TAX_PRODUCTION_SHADOW = window.Theater.ProductionPosttype.ShadowTaxonomy;
 
@@ -927,7 +891,7 @@ const productionShadowRelatedQuery = {
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Shows content related to the production, that is connected to this post. ', 'theater-production-blocks'),
   keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('relates', 'theater-production-blocks'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('staging', 'theater-production-blocks'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('theater', 'theater-production-blocks'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('connected', 'theater-production-blocks')],
   // isDefault: 	true,
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
   // default: loop
   attributes: {
     // queryId:		0,
@@ -1019,7 +983,7 @@ const productionShadowRelatedQueryEngine = (0,_wordpress_compose__WEBPACK_IMPORT
     // console.log(currentPost);
     // go on if it's a 'production' or if current post can have 'production_shadow' terms
     // otherwise exit
-    if (PT_PRODUCTION !== currentPost.type && _utils_constants_js__WEBPACK_IMPORTED_MODULE_7__.PT_SUBSITE !== currentPost.type && !currentPost.TAX_PRODUCTION_SHADOW) return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockListBlock, {
+    if (PT_PRODUCTION !== currentPost.type && !currentPost.TAX_PRODUCTION_SHADOW) return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockListBlock, {
       ...props
     });
 
@@ -1029,15 +993,6 @@ const productionShadowRelatedQueryEngine = (0,_wordpress_compose__WEBPACK_IMPORT
     if (PT_PRODUCTION === currentPost.type) {
       shadowedProductions = [currentPost.meta.shadow_ft_production_shadow_term_id];
       // console.log(shadowedProductions);
-    } else if (_utils_constants_js__WEBPACK_IMPORTED_MODULE_7__.PT_SUBSITE === currentPost.type) {
-      const getShadowedProductions = () => {
-        let parentProduction = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.select)('core').getEntityRecord('postType', PT_PRODUCTION, currentPost.parent);
-        if ('undefined' !== typeof parentProduction && 0 !== parentProduction.meta.length) {
-          shadowedProductions = [parentProduction.meta.shadow_ft_production_shadow_term_id];
-        }
-        return;
-      };
-      getShadowedProductions();
     } else {
       /**
        * HOly holy holy

@@ -8,7 +8,7 @@
 // export const TARGETGROUP_META = window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
 
 // export const PT_PRODUCTION = 'ft_production';
-export const PT_SUBSITE	   = 'tb_prod_subsite';
+// export const PT_SUBSITE	   = 'tb_prod_subsite';
 
 
 // export const TAX_PRODUCTION_SHADOW = 'ft_production_shadow';

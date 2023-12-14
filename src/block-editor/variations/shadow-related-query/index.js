@@ -37,10 +37,6 @@ import { addFilter } from '@wordpress/hooks';
 /**
  * Internal dependencies
  */
-import { 
-	// PT_PRODUCTION,
-	PT_SUBSITE
-} from '../../../utils/constants.js'
 const PT_PRODUCTION = window.Theater.ProductionPosttype.Slug;
 const TAX_PRODUCTION_SHADOW = window.Theater.ProductionPosttype.ShadowTaxonomy;
 
@@ -176,8 +172,6 @@ const productionShadowRelatedQueryEngine = createHigherOrderComponent(BlockListB
 	if (
 		PT_PRODUCTION !== currentPost.type
 		&&
-		PT_SUBSITE !== currentPost.type
-		&&
 		!currentPost.TAX_PRODUCTION_SHADOW
 	)
 		return <BlockListBlock { ...props } />;	
@@ -192,20 +186,6 @@ const productionShadowRelatedQueryEngine = createHigherOrderComponent(BlockListB
 	{
 		shadowedProductions = [ currentPost.meta.shadow_ft_production_shadow_term_id ];
 // console.log(shadowedProductions);
-	}
-
-	else if (PT_SUBSITE === currentPost.type) 
-	{
-		const getShadowedProductions = (  ) => {
-			 let parentProduction = select('core').getEntityRecord( 'postType', PT_PRODUCTION, currentPost.parent ) 
-
-			if ( 'undefined' !== typeof parentProduction && 0 !== parentProduction.meta.length)
-			{
-				shadowedProductions = [ parentProduction.meta.shadow_ft_production_shadow_term_id ];
-			}
-			return;
-		};
-		getShadowedProductions(  );
 	}
 
 	else
