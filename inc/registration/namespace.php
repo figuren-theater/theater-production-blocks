@@ -88,3 +88,26 @@ function add_post_type_supports( string $post_type ): void {
 		get_post_type_supports( $post_type )
 	);
 }
+
+
+function get_production_shadow_taxonomy(): string {
+	return (string) apply_filters(
+		'wpt-production-shadow-taxonomy',
+		'ft_production_shadow'
+	);
+}
+
+
+
+/**
+ * Get backend-only editor assets.
+ *
+ * @return string[]
+ */
+function get_editor_assets(): array {
+	return [
+		'document-setting-panel',
+		'shadow-related-query',
+		'shadow-terms',
+	];
+}
