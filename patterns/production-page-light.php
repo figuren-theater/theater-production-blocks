@@ -8,13 +8,12 @@
  * @package figuren-theater/theater-production-blocks
  */
 
- namespace Figuren_Theater\Production_Blocks\Patterns;
+namespace Figuren_Theater\Production_Blocks\Patterns;
 
- use Figuren_Theater\Production_Blocks\Registration;
+use Figuren_Theater\Production_Blocks\Registration;
  
 return array(
 	'title'      => __( 'Production Page: Light variant', 'theater-production-blocks' ),
-	// 'viewportWidth' => 900,
 	'categories' => array( 'page', 'columns', 'theater' ),
 	'postTypes'  => (array) Registration\get_production_post_type(),
 	'blockTypes' => array( 'core/post-content' ),

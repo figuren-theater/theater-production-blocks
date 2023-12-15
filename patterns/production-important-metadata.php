@@ -7,10 +7,10 @@
  *
  * @package figuren-theater/theater-production-blocks
  */
+ 
+namespace Figuren_Theater\Production_Blocks\Patterns;
 
- namespace Figuren_Theater\Production_Blocks\Patterns;
-
- use Figuren_Theater\Production_Blocks\Registration;
+use Figuren_Theater\Production_Blocks\Registration;
  
 return array(
 	'title'         => __( 'Production Meta Data', 'theater-production-blocks' ),
@@ -24,7 +24,6 @@ return array(
 	'viewportWidth' => 300,
 	'categories'    => array( 'text', 'columns', 'theater' ),
 	'postTypes'     => (array) Registration\get_production_post_type(),
-	// 'blockTypes'    => array( 'core/post-content' ),
 	'content'       => '<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group"><!-- wp:heading {"level":3,"fontSize":"large"} -->
 <h3 class="has-large-font-size"><em>' . __( 'Targetgroup', 'theater-production-blocks' ) . '</em></h3>
