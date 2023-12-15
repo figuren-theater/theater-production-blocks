@@ -89,7 +89,11 @@ function add_post_type_supports( string $post_type ): void {
 	);
 }
 
-
+/**
+ * Get the slug of that taxonomy that is or should be used for shadowing the theater-productions post_type.
+ *
+ * @return string
+ */
 function get_production_shadow_taxonomy(): string {
 	return (string) apply_filters(
 		'wpt-production-shadow-taxonomy',

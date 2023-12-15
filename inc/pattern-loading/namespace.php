@@ -24,7 +24,12 @@ function bootstrap(): void {
 	add_action( 'init', __NAMESPACE__ . '\\register_pattern_category' );
 }
 
-function register_patterns() {
+/**
+ * Registers multiple new block patterns.
+ *
+ * @return void
+ */
+function register_patterns(): void {
 
 	/**
 	 * Filters the block patterns provided by the plugin.
@@ -34,8 +39,8 @@ function register_patterns() {
 	$block_patterns = apply_filters( 
 		__NAMESPACE__ . '\\register_patterns',
 		[
-			// important parts of productions
-			'production-important-metadata', // <!-- wp:pattern {"slug":"wpt/production-important-metadata"} /-->
+			// Important parts of productions.
+			'production-important-metadata',
 
 			// Layouts can be used for Productions Details.
 			'production-page-dark',
@@ -49,7 +54,13 @@ function register_patterns() {
 	);
 }
 
-
+/**
+ * Registers a new block pattern.
+ *
+ * @param  string $block_pattern Slug|Filename of the pattern.
+ *
+ * @return void
+ */
 function register_pattern( string $block_pattern ): void {
 	// @todo use a more global prefix.
 	$_namespace = 'wpt';
@@ -58,10 +69,15 @@ function register_pattern( string $block_pattern ): void {
 
 	register_block_pattern(
 		$_namespace . '/' . $block_pattern,
-		require $pattern_file
+		require $pattern_file // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
 	);
 }
 
+/**
+ * Registers a new block pattern category 'Theater'.
+ *
+ * @return void
+ */
 function register_pattern_category(): void {
 	register_block_pattern_category(
 		'theater',
