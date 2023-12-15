@@ -26,6 +26,7 @@ function register(): void {
 	);
 
 	Block_Loading\bootstrap(); // Should run on init|0 or earlier.
+	Pattern_Loading\bootstrap(); // Should run on init.
 }
 
 /**

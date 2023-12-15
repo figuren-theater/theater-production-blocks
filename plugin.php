@@ -44,6 +44,7 @@ const DIRECTORY = __DIR__;
  * @todo #5 Add composer autoloading strategy
  */
 require_once DIRECTORY . '/inc/block-loading/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
+require_once DIRECTORY . '/inc/pattern-loading/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 require_once DIRECTORY . '/inc/registration/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 require_once DIRECTORY . '/inc/namespace.php'; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 
