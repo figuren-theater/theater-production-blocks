@@ -54,7 +54,7 @@ import { Prefix, Suffix } from '../../../utils/pre-suf-fix.js';
  * @param {string}  root0.context.postType
  * @param {number}  root0.context.postId
  *
- * @return {WPElement} Element to render.
+ * @return {Function} Element to render.
  */
 export default function Edit({
 	attributes: { textAlign, prefix, suffix },
