@@ -108,18 +108,18 @@ msgstr "Premieren-Datum"
 #: build/document-setting-panel/document-setting-panel.js:177
 #: build/premiere/premiere.js:115
 msgid "Choose a Date"
-msgstr "Wähle ein Datum"
+msgstr "Wählen Sie ein Datum"
 
 #: build/document-setting-panel/document-setting-panel.js:332
 #: src/block-editor/plugins/document-setting-panel/index.js:103
 #: build/document-setting-panel/document-setting-panel.js:207
 msgid "Add the duration in Minutes."
-msgstr "Gib die Dauer in Minuten an."
+msgstr "Geben Sie die Dauer in Minuten an."
 
 #: build/duration/duration.js:151 src/block-editor/blocks/duration/edit.js:128
 #: build/duration/duration.js:128
 msgid "Show human readable duration."
-msgstr "Zeige die Dauer in Worten."
+msgstr "Zeigt die Dauer in Worten."
 
 #: build/duration/duration.js:156 src/block-editor/blocks/duration/edit.js:138
 #: build/duration/duration.js:138

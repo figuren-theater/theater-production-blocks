@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2023-09-30 00:38+0200",
+    "translation-revision-date": "2023-12-16 02:46+0100",
     "generator": "WP-CLI\/2.7.1",
     "source": "build\/duration\/duration.js",
     "domain": "messages",
@@ -10,18 +10,6 @@
                 "lang": "de_DE",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
-            "Prefix": [
-                ""
-            ],
-            "Suffix": [
-                ""
-            ],
-            "block title\u0004Duration": [
-                "Dauer"
-            ],
-            "block description\u0004Shows duration of current production.": [
-                "Zeigt die Dauer dieser Produktion."
-            ],
             "Show human readable duration.": [
                 "Zeige die Dauer in Worten."
             ],
@@ -30,6 +18,12 @@
             ],
             "Shows pure \"130\" minutes only.": [
                 "Zeigt nur die puren \"130\" Minuten an."
+            ],
+            "block title\u0004Duration": [
+                "Dauer"
+            ],
+            "block description\u0004Shows duration of current production.": [
+                "Zeigt die Dauer dieser Produktion."
             ]
         }
     }

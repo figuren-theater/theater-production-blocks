@@ -1,7 +1,7 @@
 {
-    "translation-revision-date": "2023-09-30 00:38+0200",
+    "translation-revision-date": "2023-12-16 02:46+0100",
     "generator": "WP-CLI\/2.7.1",
-    "source": "src\/block-editor\/blocks\/premiere\/index.js",
+    "source": "build\/premiere\/premiere.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
@@ -10,11 +10,14 @@
                 "lang": "de_DE",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
+            "Choose a Date": [
+                "W\u00e4hlen Sie ein Datum"
+            ],
             "block title\u0004Premiere": [
                 "Premiere"
             ],
             "block description\u0004Show Premiere Date of production.": [
-                "Zeigt das Premiere-Datum der Produktion."
+                "Zeigt das Premieren-Datum der Produktion."
             ]
         }
     }

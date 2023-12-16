@@ -1,7 +1,7 @@
 {
-    "translation-revision-date": "2023-09-30 00:38+0200",
+    "translation-revision-date": "2023-12-16 02:46+0100",
     "generator": "WP-CLI\/2.7.1",
-    "source": "build\/document-setting-panel.js",
+    "source": "build\/document-setting-panel\/document-setting-panel.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
@@ -10,6 +10,12 @@
                 "lang": "de_DE",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
+            "Targetgroup": [
+                "Zielgruppe"
+            ],
+            "Duration": [
+                "Dauer"
+            ],
             "Production Meta": [
                 "Infos zur Produktion"
             ],
@@ -18,12 +24,6 @@
             ],
             "Choose a Date": [
                 "W\u00e4hle ein Datum"
-            ],
-            "Targetgroup": [
-                "Zielgruppe"
-            ],
-            "Duration": [
-                "Dauer"
             ],
             "Add the duration in Minutes.": [
                 "Gib die Dauer in Minuten an."
