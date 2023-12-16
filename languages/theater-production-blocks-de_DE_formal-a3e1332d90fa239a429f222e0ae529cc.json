@@ -1,7 +1,7 @@
 {
-    "translation-revision-date": "2023-09-30 00:38+0200",
+    "translation-revision-date": "2023-12-16 02:46+0100",
     "generator": "WP-CLI\/2.7.1",
-    "source": "src\/block-editor\/blocks\/duration\/edit.js",
+    "source": "build\/duration\/duration.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
@@ -11,13 +11,19 @@
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
             "Show human readable duration.": [
-                "Zeige die Dauer in Worten."
+                "Zeigt die Dauer in Worten."
             ],
             "Shows e.g. \"2 hours 10 minutes\".": [
                 "Zeigt z.B. \"2 Stunden 10 Minuten\"."
             ],
             "Shows pure \"130\" minutes only.": [
                 "Zeigt nur die puren \"130\" Minuten an."
+            ],
+            "block title\u0004Duration": [
+                "Dauer"
+            ],
+            "block description\u0004Shows duration of current production.": [
+                "Zeigt die Dauer dieser Produktion."
             ]
         }
     }

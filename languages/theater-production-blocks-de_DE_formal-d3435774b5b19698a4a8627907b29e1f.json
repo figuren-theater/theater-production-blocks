@@ -1,7 +1,7 @@
 {
-    "translation-revision-date": "2023-09-30 00:38+0200",
+    "translation-revision-date": "2023-12-16 02:46+0100",
     "generator": "WP-CLI\/2.7.1",
-    "source": "src\/block-editor\/blocks\/targetgroup\/edit.js",
+    "source": "build\/targetgroup\/targetgroup.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
@@ -12,6 +12,12 @@
             },
             "Targetgroup": [
                 "Zielgruppe"
+            ],
+            "block title\u0004Targetgroup": [
+                "Zielgruppe"
+            ],
+            "block description\u0004Shows targetgroup of current production.": [
+                "Zeigt die Zielgruppe(n) der Produktion."
             ]
         }
     }
