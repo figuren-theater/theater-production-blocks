@@ -170,13 +170,15 @@ function register_dynamic_block( string $dir, string $block_namespace ): void {
 
 	wp_add_inline_script(
 		"wpt-production-$block-editor-script",
-		'window.Theater = window.Theater || {};' .
-		'window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};' .
-		"window.Theater.ProductionBlocks.{$block} = " . wp_json_encode(
+		'window.Theater = window.Theater || {};'
+		. 'window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};'
+		. "window.Theater.ProductionBlocks.{$block} = "
+		. wp_json_encode(
 			[
 				'PostMetaKey' => $meta_key,
 			] 
-		) . ';',
+		)
+		. ';',
 		'before'
 	);
 }
@@ -271,14 +273,16 @@ function register_asset( string $asset ): void {
 	if ( 0 === \did_action( __NAMESPACE__ . '\\provide_script_vars' ) ) {
 		wp_add_inline_script(
 			"theater-production-blocks--$asset",
-			'window.Theater = window.Theater || {};' .
-			'window.Theater.ProductionPosttype = window.Theater.ProductionPosttype || {};' .
-			'window.Theater.ProductionPosttype = ' . wp_json_encode(
+			'window.Theater = window.Theater || {};'
+			. 'window.Theater.ProductionPosttype = window.Theater.ProductionPosttype || {};'
+			. 'window.Theater.ProductionPosttype = ' 
+			. wp_json_encode(
 				[
 					'Slug'           => Registration\get_production_post_type(),
 					'ShadowTaxonomy' => Registration\get_production_shadow_taxonomy(),
 				] 
-			) . ';',
+			) 
+			. ';',
 			'before'
 		);
 			
