@@ -25,13 +25,12 @@ import { getSettings } from '@wordpress/date';
 
 import DateSelect from '../../../utils/date-select';
 
-import { PT_PRODUCTION } from '../../../utils/constants.js';
+const PT_PRODUCTION = window.Theater.ProductionPosttype.Slug;
+
 const DURATION_META = window.Theater.ProductionBlocks.duration.PostMetaKey;
 const PREMIERE_META = window.Theater.ProductionBlocks.premiere.PostMetaKey;
 const TARGETGROUP_META =
 	window.Theater.ProductionBlocks.targetgroup.PostMetaKey;
-
-// import { getPostMeta, setPostMeta } from '../../../utils/helper.js'
 
 const ProductionDocumentSettingPanel = () => {
 	// Get post type.
@@ -57,7 +56,7 @@ const ProductionDocumentSettingPanel = () => {
 			name="production-document-setting-panel"
 			icon="art"
 			title={__('Production Meta', 'theater-production-blocks')}
-			className="t7b4-production-document-setting-panel"
+			className="wpt-production-document-setting-panel"
 		>
 			<div className="plugin-sidebar-content">
 				<RichText

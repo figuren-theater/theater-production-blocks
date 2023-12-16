@@ -5,7 +5,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save
  *
- * @return {WPElement} Element to render.
+ * @return {Function} Element to render.
  */
 export default function save() {
 	return null;

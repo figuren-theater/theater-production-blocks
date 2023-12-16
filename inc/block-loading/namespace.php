@@ -8,6 +8,7 @@
 namespace Figuren_Theater\Production_Blocks\Block_Loading;
 
 use Figuren_Theater\Production_Blocks;
+use Figuren_Theater\Production_Blocks\Registration;
 use WP_Post_Type;
 use function add_action;
 use function current_user_can;
@@ -59,7 +60,7 @@ function i18n(): void {
 
 	\array_map(
 		__NAMESPACE__ . '\\register_asset',
-		get_assets()
+		Registration\get_editor_assets()
 	);
 }
 
@@ -169,13 +170,15 @@ function register_dynamic_block( string $dir, string $block_namespace ): void {
 
 	wp_add_inline_script(
 		"wpt-production-$block-editor-script",
-		'window.Theater = window.Theater || {};' .
-		'window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};' .
-		"window.Theater.ProductionBlocks.{$block} = " . wp_json_encode(
+		'window.Theater = window.Theater || {};'
+		. 'window.Theater.ProductionBlocks = window.Theater.ProductionBlocks || {};'
+		. "window.Theater.ProductionBlocks.{$block} = "
+		. wp_json_encode(
 			[
 				'PostMetaKey' => $meta_key,
 			] 
-		) . ';',
+		)
+		. ';',
 		'before'
 	);
 }
@@ -223,16 +226,6 @@ function get_meta_key( string $dir, string $block_namespace ): string {
 	);
 }
 
-/**
- * Get backend-only editor assets.
- *
- * @return string[]
- */
-function get_assets(): array {
-	return [
-		'document-setting-panel',
-	];
-}
 
 /**
  * Register a new script and sets translated strings for the script.
@@ -247,7 +240,7 @@ function register_asset( string $asset ): void {
 
 	$dir = Production_Blocks\DIRECTORY;
 
-	$script_asset_path = "$dir/build/$asset.asset.php";
+	$script_asset_path = "$dir/build/$asset/$asset.asset.php";
 
 	
 	if ( ! \file_exists( $script_asset_path ) ) {
@@ -260,7 +253,7 @@ function register_asset( string $asset ): void {
 		}
 	}
 
-	$index_js     = "build/$asset.js";
+	$index_js     = "build/$asset/$asset.js";
 	$script_asset = require $script_asset_path; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
 
 	wp_register_script(
@@ -276,6 +269,25 @@ function register_asset( string $asset ): void {
 		'theater-production-blocks',
 		Production_Blocks\DIRECTORY . '/languages'
 	);
+
+	if ( 0 === \did_action( __NAMESPACE__ . '\\provide_script_vars' ) ) {
+		wp_add_inline_script(
+			"theater-production-blocks--$asset",
+			'window.Theater = window.Theater || {};'
+			. 'window.Theater.ProductionPosttype = window.Theater.ProductionPosttype || {};'
+			. 'window.Theater.ProductionPosttype = ' 
+			. wp_json_encode(
+				[
+					'Slug'           => Registration\get_production_post_type(),
+					'ShadowTaxonomy' => Registration\get_production_shadow_taxonomy(),
+				] 
+			) 
+			. ';',
+			'before'
+		);
+			
+		\do_action( __NAMESPACE__ . '\\provide_script_vars' );
+	}
 }
 
 /**
@@ -286,7 +298,7 @@ function register_asset( string $asset ): void {
 function enqueue_assets(): void {
 	\array_map(
 		__NAMESPACE__ . '\\enqueue_asset',
-		get_assets()
+		Registration\get_editor_assets()
 	);
 }
 

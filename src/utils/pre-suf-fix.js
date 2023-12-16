@@ -32,7 +32,7 @@ export const Prefix = ({
 		{isSelected ? (
 			<RichText
 				allowedFormats={ALLOWED_PRE_SUF_FIX_FORMATS}
-				className="t7b4-production-blocks__prefix"
+				className="wpt-production-blocks__prefix"
 				multiline={false}
 				aria-label={label}
 				placeholder={placeholder}
@@ -68,7 +68,7 @@ export const Suffix = ({
 		{isSelected ? (
 			<RichText
 				allowedFormats={ALLOWED_PRE_SUF_FIX_FORMATS}
-				className="t7b4-production-blocks__suffix"
+				className="wpt-production-blocks__suffix"
 				multiline={false}
 				aria-label={label}
 				placeholder={placeholder}
