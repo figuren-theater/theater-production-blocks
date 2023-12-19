@@ -13,5 +13,8 @@ module.exports = {
 
 		'document-setting-panel/document-setting-panel':
 			'./src/block-editor/plugins/document-setting-panel',
+
+		'document-setting-panel/slot':
+			'./src/block-editor/plugins/document-setting-panel/slot.js',
 	},
 };
