@@ -14,7 +14,15 @@ import { RichText } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { ALLOWED_PRE_SUF_FIX_FORMATS } from './constants.js';
+// Allowed formats for the prefix and suffix fields.
+const ALLOWED_PRE_SUF_FIX_FORMATS = [
+	'core/bold',
+	'core/image',
+	'core/italic',
+	// 'core/link',
+	// 'core/strikethrough',
+	'core/text-color',
+];
 
 const defaultPrefixLabel = __('Prefix', 'theater-production-blocks');
 const defaultPrefixPlaceholder =
