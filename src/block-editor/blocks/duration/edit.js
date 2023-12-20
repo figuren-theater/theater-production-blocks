@@ -90,7 +90,7 @@ export default function Edit({
 	const updateMetaValue = (newValue) => {
 		setMeta({ ...meta, [DURATION_META]: newValue });
 	};
-	
+
 	/**
 	 * Prepare ServerSideRenderer
 	 *

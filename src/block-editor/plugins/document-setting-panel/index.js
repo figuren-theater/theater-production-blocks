@@ -33,13 +33,10 @@ const ProductionDocumentSettingPanel = () => {
 			className="wpt-production-document-setting-panel"
 		>
 			<ProductionPluginPostStatusInfo.Slot />
-			
 		</PluginDocumentSettingPanel>
 	);
 };
 
-
 registerPlugin('production-document-setting-panel', {
 	render: ProductionDocumentSettingPanel,
 });
-

@@ -13,10 +13,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * WordPress dependencies
  */
-import {
-	Flex,
-	FlexItem,
-} from '@wordpress/components';
+import { Flex, FlexItem } from '@wordpress/components';
 
 // taken from https://developer.wordpress.org/block-editor/how-to-guides/metabox/
 import { useEntityProp } from '@wordpress/core-data';
