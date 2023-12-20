@@ -26,8 +26,8 @@ import { useEntityProp } from '@wordpress/core-data';
 import {
 	AlignmentControl,
 	BlockControls,
-	useBlockProps,
 	RichText,
+	useBlockProps,
 } from '@wordpress/block-editor';
 
 /**
@@ -85,6 +85,7 @@ export default function Edit({
 					}}
 				/>
 			</BlockControls>
+
 			<div {...blockProps}>
 				<Flex justify="space-around">
 					<FlexItem>

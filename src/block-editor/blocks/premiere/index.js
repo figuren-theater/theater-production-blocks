@@ -12,12 +12,15 @@ import { _x } from '@wordpress/i18n';
  */
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
+import { registerPlugin } from '@wordpress/plugins';
+
 /**
  * Internal dependencies
  */
 import json from './block.json';
 import Edit from './edit';
 import save from './save';
+import PremiereFill from './slotfill';
 
 const { name, ...settings } = json;
 
@@ -58,3 +61,5 @@ registerBlockType(name, {
 		],
 	},
 });
+
+registerPlugin('premiere-slot-fill', { render: PremiereFill });

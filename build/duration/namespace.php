@@ -95,12 +95,10 @@ function get_duration( WP_Block $block ): int {
 
 	$meta_field_value = false;
 	// Check nonce for security.
-	if ( ( \defined( 'DOING_AJAX' ) && \DOING_AJAX ) 
-	&& false !== \check_ajax_referer( 'update-post_' . $block->context['postId'], '_wpnonce' )
-	&& isset( $_GET['metaFieldValue'] )
-	&& ! empty( $_GET['metaFieldValue'] )
-	&& \is_string( $_GET['metaFieldValue'] )
-	) {
+	// @TODO https://github.com/figuren-theater/theater-production-blocks/issues/24 Re-Enable nonce check within rendercallback of dynamic block.
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( isset( $_GET['metaFieldValue'] ) && ! empty( $_GET['metaFieldValue'] ) && \is_string( $_GET['metaFieldValue'] ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$meta_field_value = sanitize_text_field( wp_unslash( $_GET['metaFieldValue'] ) );
 	}
 

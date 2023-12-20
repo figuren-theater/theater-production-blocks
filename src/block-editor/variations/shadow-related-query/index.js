@@ -147,13 +147,12 @@ const productionShadowRelatedQueryEngine = createHigherOrderComponent(
 			// console.log(props);
 			// console.log(props.attributes.query.taxQuery.ft_production_shadow);
 			// console.log(props.attributes.query.taxQuery[TAX_PRODUCTION_SHADOW]);
-			// console.log(props.attributes.query.taxQuery[TAX_PRODUCTION_SHADOW][0]);
+			// console.log(props.attributes.query.taxQuery[TAX_PRODUCTION_SHADOW].length);
 
 			// VARIANT 1 // run only one time
 			if (
-				// 'undefined' !== props.attributes.query.taxQuery.ft_production_shadow
-				// &&
-				0 !== props.attributes.query.taxQuery[TAX_PRODUCTION_SHADOW][0]
+				0 !==
+				props.attributes.query.taxQuery[TAX_PRODUCTION_SHADOW].length
 			)
 				// VARIANT 2 // run everytime and update previous block
 				// if ( 1 !== props.attributes.query.taxQuery.length )
@@ -182,11 +181,19 @@ const productionShadowRelatedQueryEngine = createHigherOrderComponent(
 				/**
 				 * HOly holy holy
 				 *
-				 * @param {Function} select Curreent posts terms of production-shadow taxonomy.
+				 * @param {Function} select Current posts terms of production-shadow taxonomy.
 				 * @return  Array           List of term-IDs
 				 */
-				shadowedProductions = useSelect((select) => {
+				shadowedProductions = useSelect(() => {
+					// const innerSelect = select('core/editor');
+					// Rename the inner select variable to avoid the linting error
+					// const _shadowedProductions =
+					// 	innerSelect.getEditedPostAttribute(
+					// 		TAX_PRODUCTION_SHADOW
+					// 	);
+					// return _shadowedProductions;
 					const { getEditedPostAttribute } = select('core/editor');
+					// const { getEditedPostAttribute } = innerSelect;
 					return getEditedPostAttribute(TAX_PRODUCTION_SHADOW);
 				}, []);
 			}

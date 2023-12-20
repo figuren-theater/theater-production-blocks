@@ -11,6 +11,7 @@ import { _x } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 import { registerBlockType } from '@wordpress/blocks';
+import { registerPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies
@@ -18,6 +19,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import json from './block.json';
 import Edit from './edit';
 import save from './save';
+import DurationFill from './slotfill';
 
 const { name, ...settings } = json;
 
@@ -37,3 +39,5 @@ registerBlockType(name, {
 	edit: Edit,
 	save,
 });
+
+registerPlugin('duration-slot-fill', { render: DurationFill });

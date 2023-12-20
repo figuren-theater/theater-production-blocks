@@ -12,12 +12,14 @@ import { _x } from '@wordpress/i18n';
  */
 import { registerBlockType } from '@wordpress/blocks';
 
+import { registerPlugin } from '@wordpress/plugins';
 /**
  * Internal dependencies
  */
 import json from './block.json';
 import Edit from './edit';
 import save from './save';
+import TargetgroupFill from './slotfill';
 
 const { name, ...settings } = json;
 
@@ -37,3 +39,5 @@ registerBlockType(name, {
 	edit: Edit,
 	save,
 });
+
+registerPlugin('targetgroup-slot-fill', { render: TargetgroupFill });

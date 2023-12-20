@@ -90,6 +90,7 @@ export default function Edit({
 					}}
 				/>
 			</BlockControls>
+
 			<div {...blockProps}>
 				<Flex justify="space-around">
 					<FlexItem>
