@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/theater-production-blocks/compare/0.1.0...HEAD)
+## [Unreleased](https://github.com/figuren-theater/theater-production-blocks/compare/0.2.0...HEAD)
+
+## [0.2.0](https://github.com/figuren-theater/theater-production-blocks/compare/0.1.0...0.2.0) - 2024-02-14
+
+### 🚀 Added
+
+- Rename production post_type to match "theater.wp" ([#37](https://github.com/figuren-theater/theater-production-blocks/pull/37))
+
+### Dependency Updates & Maintenance
+
+- Bump classnames from 2.3.2 to 2.5.1 ([#26](https://github.com/figuren-theater/theater-production-blocks/pull/26))
+- Bump prettier from 3.0.3 to 3.2.5 ([#34](https://github.com/figuren-theater/theater-production-blocks/pull/34))
+- Run wp-scripts packages-update ([#38](https://github.com/figuren-theater/theater-production-blocks/pull/38))
 
 ## [0.1.0](https://github.com/figuren-theater/theater-production-blocks/compare/0.1.0...0.1.0) - 2023-12-20
 
