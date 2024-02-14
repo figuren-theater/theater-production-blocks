@@ -36,17 +36,33 @@ function get_post_types(): array {
  */
 function get_production_post_type(): string {
 	/**
-	 * Use the 'production-post-type' of the WordPress 'theater' plugin as a default.
-	 *
-	 * Also provides a default, which is the old slug, I (@carstingaxion) used throughout the figuren.theater multisite network.
+	 * Use the 'production-post-type' of the 'Theater' WordPress plugin as a default.
 	 *
 	 * @todo This filter is documented at ...
 	 */
 	return (string) apply_filters(
-		'wpt-production-posttype',
-		'ft_production'
+		'wpt_production-posttype',
+		'wp_theatre_prod'
 	);
 }
+
+
+/**
+ * Get the slug of the taxonomy,
+ * that is or should be used for shadowing the theater-productions post_type.
+ * 
+ * DANGER: THIS IS PSEUDOCODE,
+ *         the taxonomy isn't registered anywhere (yet).
+ *
+ * @return string
+ */
+function get_production_shadow_taxonomy(): string {
+	return (string) apply_filters(
+		'wpt_production-shadow-taxonomy',
+		'wp_theatre_prod_shadow'
+	);
+}
+
 
 /**
  * Get list of post_type supports, per post_type.
@@ -88,19 +104,6 @@ function add_post_type_supports( string $post_type ): void {
 		get_post_type_supports( $post_type )
 	);
 }
-
-/**
- * Get the slug of that taxonomy that is or should be used for shadowing the theater-productions post_type.
- *
- * @return string
- */
-function get_production_shadow_taxonomy(): string {
-	return (string) apply_filters(
-		'wpt-production-shadow-taxonomy',
-		'ft_production_shadow'
-	);
-}
-
 
 
 /**
