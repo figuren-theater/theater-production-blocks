@@ -6,6 +6,13 @@
 import { registerBlockType, createBlock } from '@wordpress/blocks';
 
 /**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
+ */
+import { _x } from '@wordpress/i18n';
+
+/**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * All files containing `style` keyword are bundled together. The code used
  * gets applied both to the front of your site and to the editor.
@@ -38,4 +45,42 @@ registerBlockType(name, {
 	),
 	edit: Edit,
 	save,
+	transforms: {
+		from: [
+			{
+				type: 'shortcode',
+				tag: 'wpt_productions',
+				// transform( { named: { src } } ) {
+				transform( { named: { src } } ) {
+					return createBlock( 
+						'core/query',
+						{
+							"query": {
+								"postType": "wp_theatre_prod",
+								"inherit":false
+							}
+						},
+						[
+							createBlock( 'core/post-template', {}, [
+
+								createBlock( 'core/post-title' ),
+								// createBlock( 'core/post-excerpt' ),
+							] ),
+						]
+						
+					);
+				},
+				// Prevent the shortcode to be converted
+				// into this block when it doesn't
+				// have the proper ID.
+				// isMatch( { named: { id } } ) {
+				// 	return id === 'my-id';
+				// },
+			},
+		],
+	},
 });
+
+/**
+[wpt_productions]
+ */
