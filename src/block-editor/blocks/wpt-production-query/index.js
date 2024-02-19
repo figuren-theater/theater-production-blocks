@@ -43,8 +43,10 @@ registerBlockType(name, {
 		'block description',
 		'wpt'
 	),
-	edit: Edit,
-	save,
+	supports: {
+		// Hide this block from the inserter.
+		inserter: false,
+	},
 
 	transforms: {
 		from: [
