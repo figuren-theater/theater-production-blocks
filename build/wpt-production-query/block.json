@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wpt/wpt-production-query",
+  "version": "0.1.0",
+  "title": "Wpt production query",
+  "category": "widgets",
+  "textdomain": "theater-production-blocks",
+  "editorScript": "file:wpt-production-query.js",
+  "editorStyle": "file:./wpt-production-query.css",
+  "style": "file:./style-wpt-production-query.css"
+}
