@@ -84,7 +84,6 @@ function get_post_type_supports( string $post_type ): array {
 			'premiere',
 			'duration',
 			'targetgroup',
-			// 'wpt-production-query', // Only WIP and shouldn't be here !!
 		],
 		$post_type
 	);
