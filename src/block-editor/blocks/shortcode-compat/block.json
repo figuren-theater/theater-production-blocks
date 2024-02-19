@@ -1,0 +1,8 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wpt/shortcode-compat",
+	"title": "Not a block, but a compatibility layer for 'old' shortcodes.",
+	"textdomain": "theater-production-blocks",
+	"editorScript": "file:shortcode-compat.js"
+}

@@ -16,8 +16,8 @@ import { _x } from '@wordpress/i18n';
  * Internal dependencies
  */
 import json from './block.json';
-import { wpt_event_ticket_button } from './shortcode-combat/wpt_event_ticket_button';
-import { wpt_productions } from './shortcode-combat/wpt_productions';
+import { wpt_event_ticket_button } from './transforms/wpt_event_ticket_button';
+import { wpt_productions } from './transforms/wpt_productions';
 
 const {name, ...settings} = json;
 

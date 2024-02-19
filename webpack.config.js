@@ -10,7 +10,7 @@ module.exports = {
 		'premiere/premiere': './src/block-editor/blocks/premiere',
 		'duration/duration': './src/block-editor/blocks/duration',
 		'targetgroup/targetgroup': './src/block-editor/blocks/targetgroup',
-		'wpt-production-query/wpt-production-query': './src/block-editor/blocks/wpt-production-query',
+		'shortcode-compat/shortcode-compat': './src/block-editor/blocks/shortcode-compat',
 
 		'document-setting-panel/document-setting-panel':
 			'./src/block-editor/plugins/document-setting-panel',
