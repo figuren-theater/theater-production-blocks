@@ -7,6 +7,12 @@ module.exports = {
 		'shadow-related-query/shadow-related-query':
 			'./src/block-editor/variations/shadow-related-query',
 
+
+		'postmeta-binding-remark/postmeta-binding-remark':
+			// './src/block-editor/variations/postmeta-binding-remark',
+			'./src/block-editor/blocks/postmeta-binding-remark',
+
+
 		'premiere/premiere': './src/block-editor/blocks/premiere',
 		'duration/duration': './src/block-editor/blocks/duration',
 		'targetgroup/targetgroup': './src/block-editor/blocks/targetgroup',

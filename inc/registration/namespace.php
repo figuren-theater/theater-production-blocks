@@ -116,5 +116,7 @@ function get_editor_assets(): array {
 		'document-setting-panel',
 		'shadow-related-query',
 		'shadow-terms',
+
+		'postmeta-binding-remark',
 	];
 }
