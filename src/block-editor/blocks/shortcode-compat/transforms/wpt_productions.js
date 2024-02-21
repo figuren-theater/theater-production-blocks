@@ -5,6 +5,8 @@
  */
 import { createBlock } from '@wordpress/blocks';
 
+const PT_PRODUCTION = window.Theater.ProductionPosttype.Slug;
+
 export const wpt_productions = {
     /**
      * Replace the deprecated shortcode '[wpt_productions]'
@@ -31,7 +33,7 @@ export const wpt_productions = {
          * @example [wpt_productions] {{content}} [/wpt_productions]
          * @example [wpt_productions fields="content"]
          * 
-         * @see https://github.coem/slimndap/wp-theatre/wiki/Shortcodes#template-2
+         * @see https://github.com/slimndap/wp-theatre/wiki/Shortcodes#template-2
          * 
          * [x] {{categories}}
          * [ ] {{cities}}
@@ -53,7 +55,7 @@ export const wpt_productions = {
         ];
         
         
-        if ( 1===2 || props.named?.fields ) {
+        if ( props.named?.fields ) {
             const fieldList = props.named.fields.split(',');
 
             // Unset default post-title, to rely completely on 'fields'.
@@ -88,8 +90,6 @@ export const wpt_productions = {
 
         }
 
-        // console.log(  props );
-
         /**
          * Available arguments to the shortcode
          * 
@@ -117,7 +117,7 @@ export const wpt_productions = {
                  */
                 'query': {
                     perPage,
-                    'postType': 'wp_theatre_prod',
+                    'postType': PT_PRODUCTION,
                     order,
                     exclude,
                     'inherit':false,
